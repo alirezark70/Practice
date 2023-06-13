@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ef.RealationConfigurationSample.Models
+﻿namespace Ef.RealationConfigurationSample.Models
 {
     public class Address
     {
