@@ -13,7 +13,6 @@ namespace Ef.RealationConfigurationSample.Models
         
 
         public int PersonId { get; set; }
-        public int PersonId2 { get; set; }
         public Person Person { get; set; }
     }
 }
