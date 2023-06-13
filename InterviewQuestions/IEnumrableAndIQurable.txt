@@ -1,0 +1,9 @@
+﻿1-If the container “lives” in memory (array, collection, etc) then IEnumerable will be used. Otherwise (if it is outside of memory), IQueryable will be used.
+
+2-IEnumerable can do forward-only reading in memory, but IQueryable can do the forward-backward reading.
+
+
+3-Querying as IEnumerable will lead to retrieving all the data to the memory. This means if you want to do some filtering, sorting, etc., 
+it will be done in memory rather than in the source of the information. IQueryable doesn’t read all the information to the memory. 
+First, it collects all the queries and executes them as a single query to the container. For additional queries (sorting, filtering, etc.) through the IQueryable interface,
+.NET will “generate” query to the source, and all the operations will be done directly in the source.
