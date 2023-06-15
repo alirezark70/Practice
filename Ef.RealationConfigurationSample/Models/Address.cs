@@ -10,7 +10,7 @@ namespace Ef.RealationConfigurationSample.Models
     {
         public int Id { get; set; }
 
-        public string City { get; set; }
+        
 
         public int PersonId { get; set; }
         public Person Person { get; set; }
