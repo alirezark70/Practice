@@ -59,7 +59,7 @@ namespace Ef.RealationConfigurationSample.TablePerHierarchy
             modelBuilder.Entity<PersonTPH>(c =>
             {
                 //با این کافنیگ می شود 
-                //thp
+                //TPH
                 //را تغییرات داد
                 c.HasDiscriminator<int>("PersonType").HasValue<PersonTPH>(1).HasValue<Student>(2).HasValue<Teacher>(3);
             });
