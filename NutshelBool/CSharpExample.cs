@@ -59,7 +59,19 @@ namespace NutshelBool
         }
 
 
-        
+        public void Documention()
+        {
+            //برای استفاده از کلمات کلیدی که در سی سارپ رزرو شده است از اتساین استفاده می کنیم
+
+            var @using = 4;
+
+            var @public = @using;
+
+            var @add= @public;
+            /////////////////
+            ///
+
+        }
     }
 
 
