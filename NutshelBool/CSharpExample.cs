@@ -80,6 +80,7 @@ namespace NutshelBool
     public class JustGit
     {
         public int Id { get; set; }
+
     }
 
     public record class PersonRecordNutshel
