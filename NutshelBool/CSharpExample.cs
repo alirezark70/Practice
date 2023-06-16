@@ -29,7 +29,10 @@ namespace NutshelBool
             Console.WriteLine(a2);
         }
 
-       
+       public void Example()
+        {
+
+        }
         public void NewDeconstructionSyntax()
         {
             var point = (3, 4);
