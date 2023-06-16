@@ -31,7 +31,8 @@ namespace NutshelBool
 
        public void Example()
         {
-
+            Console.WriteLine();
+            Console.WriteLine();
         }
         public void NewDeconstructionSyntax()
         {
@@ -76,7 +77,10 @@ namespace NutshelBool
 
         }
     }
-
+    public class JustGit
+    {
+        public int Id { get; set; }
+    }
 
     public record class PersonRecordNutshel
     {
