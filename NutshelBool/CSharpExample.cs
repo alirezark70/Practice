@@ -8,6 +8,13 @@ namespace NutshelBool
 {
     public class CSharpExample: IExampleLogger
     {
+
+        public class Page30Until60Nutshel
+        {
+            //The public keyword
+            //Page 33
+        }
+
         public void NondestructiveMutationForAnonymousypes()
         {
 
