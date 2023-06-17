@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,58 @@ namespace NutshelBool
         {
             //The public keyword
             //Page 33
+
+
+            #region Type And Conversions
+
+            public void ImplicitCast()
+            {
+                int a = 10;
+
+                long b = a; // this is implicit Cast ضمنی
+            }
+
+            public void ExpicitCast()
+            {
+                long a = 10;
+                int b =(int)a; // this is explicit cast صریح
+            }
+            #endregion
+
+
+            #region Value Type Vs Reference Types
+            //Value types••
+            ////Reference types••
+            ///Generic type parameters••
+            //Pointer types
+
+            //Value types comprise most built-in types (specifically,
+            //all numeric types, the chartype, and the bool type) as well as custom struct and enum types
+
+            //Reference types comprise all class, array, delegate, and interface types.
+               // (This includesthe predefined string type.)
+
+            //تفاوت اصلی آن ها در نحوه مدیریت شان در حافظه می باشد.
+
+
+            #endregion
+
+
+            public void Literals()
+            {
+                //نماد های برای خلاصه نوشتن
+                double milion = 1E06;
+                Console.WriteLine(milion);
+
+                //نماد های اختصاصی
+                float f = 1.0f;
+                double d = 1D;
+                decimal dc = 1.0M;
+                uint uiii = 1U;
+                long lg = 123L;
+                ulong ul = 434343443UL;
+
+            }
         }
 
         public void NondestructiveMutationForAnonymousypes()
