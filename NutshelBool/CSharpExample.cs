@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NutshelBool
 {
-    public class CSharpExample: IExampleLogger
+    public class CSharpExample : IExampleLogger
     {
 
         public class Page30Until60Nutshel
@@ -28,7 +29,7 @@ namespace NutshelBool
             public void ExpicitCast()
             {
                 long a = 10;
-                int b =(int)a; // this is explicit cast صریح
+                int b = (int)a; // this is explicit cast صریح
             }
             #endregion
 
@@ -43,14 +44,14 @@ namespace NutshelBool
             //all numeric types, the chartype, and the bool type) as well as custom struct and enum types
 
             //Reference types comprise all class, array, delegate, and interface types.
-               // (This includesthe predefined string type.)
+            // (This includesthe predefined string type.)
 
             //تفاوت اصلی آن ها در نحوه مدیریت شان در حافظه می باشد.
 
 
             #endregion
 
-
+            #region Literals
             public void Literals()
             {
                 //نماد های برای خلاصه نوشتن
@@ -66,6 +67,47 @@ namespace NutshelBool
                 ulong ul = 434343443UL;
 
             }
+            #endregion
+
+
+            #region Ref Parameter 
+
+
+
+            public void TestRef(ref int y)
+            {
+                Console.WriteLine(y);
+
+                y = 1;
+
+
+
+            }
+
+            #endregion
+
+            #region Out Parameters
+            public void SplitFullName(string fullName, out string firstName, out string lastName)
+            {
+                int i = fullName.LastIndexOf(' ');
+                firstName = fullName.Substring(0, i);
+                lastName = fullName.Substring(i + 1);
+            }
+
+
+            public void TestOutMethod()
+            {
+                //ما می توانیم با نوشتن 
+                //out_
+                //از پاس دادن این پارامتر خوداری کنیم
+                SplitFullName("Alireza Rezaee", out _, out _);
+            }
+
+
+            #endregion
+
+
+           
         }
 
         public void NondestructiveMutationForAnonymousypes()
@@ -89,7 +131,7 @@ namespace NutshelBool
             Console.WriteLine(a2);
         }
 
-       public void Example()
+        public void Example()
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -100,13 +142,13 @@ namespace NutshelBool
 
             double x = 0;
 
-            (x,double y) = point;
+            (x, double y) = point;
 
             string first = $"{x}";
 
             string secend = $"{y}";
 
-            Console.WriteLine(first +" "+ secend);
+            Console.WriteLine(first + " " + secend);
         }
 
 
@@ -117,9 +159,9 @@ namespace NutshelBool
                 > 15 => Status.High.ToString(),
                 < 15 => Status.Normall.ToString(),
                 > 9 => Status.low.ToString(),
-                
+
             };
-            
+
         }
 
 
@@ -131,7 +173,7 @@ namespace NutshelBool
 
             var @public = @using;
 
-            var @add= @public;
+            var @add = @public;
             /////////////////
             ///
 
@@ -168,7 +210,7 @@ namespace NutshelBool
     /// </summary>
     public interface IExampleLogger
     {
-        
+
         void ExampleLog(string message)
         {
             Console.WriteLine(message);

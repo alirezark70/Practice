@@ -15,5 +15,14 @@ CSharpExample examp = new CSharpExample();
 
 Page30Until60Nutshel page30Until60 = new ();
 
-page30Until60.Literals();
+//page30Until60.Literals();
+
+//page30Until60.SplitFullName("Alireza Rezaee",out string firstName,out string lastName);
+
+//int number = 100;
+
+//page30Until60.TestRef(ref number);
+
+//Console.WriteLine(number);
+
 Console.ReadLine();
