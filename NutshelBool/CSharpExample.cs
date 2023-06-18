@@ -106,8 +106,23 @@ namespace NutshelBool
 
             #endregion
 
+            #region In Parameter Modifier
+            int readonlyArgument = 44;
+            // value is still 44
+            void TestInKeyword()
+            {
+                InArgExample(readonlyArgument);
+                Console.WriteLine(readonlyArgument);
+            }
+            //کلمه کلیدی in
+            //باعث میشه مقداری که به متد داده شده فقط خواندنی باشد و تغییر نکند
+            void InArgExample(in int number)
+            {
+                // Uncomment the following line to see error CS8331
+                //number = 19;
+            }
+            #endregion
 
-           
         }
 
         public void NondestructiveMutationForAnonymousypes()
