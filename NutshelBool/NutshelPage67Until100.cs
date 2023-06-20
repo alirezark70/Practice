@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -27,9 +28,47 @@ namespace NutshelBooK
             var r = numbers[1]; //result is 20
 
         }
-        
+
 
         #endregion
 
+
+        #region Ref Method
+        static string fullName = "Alireza Rezaee"; //Values Is Alireza Rezaee -- After Call Change Full Name Is Naser Rezaee
+        //ما می توانیم متد های با فرمت ref
+        //داشته باشیم 
+        //وقتی مقدار پاس داده شده تغییر کند مقدار اصلی هم تغییر می کند
+        
+        static ref string GetFullName()
+        {
+            return ref fullName;
+        }
+
+       public void ChangeFullName()
+        {
+           ref string changeFullName=ref GetFullName();
+
+            changeFullName = "Naser Rezaee";
+        }
+
+        #endregion
+
+
+        #region Operator 
+
+        public void Null_CoalescingAssignmentOperator()
+        {
+
+            //این عملکرد میگه اگه مقدار نال بود مقدار جدید را قرار بده
+            // یعنی طرف سمت چپ اگه مقدار نداشت مقدار سمت راست را قرار بده
+            //این برای 
+            //Reference Type 
+            //ها قابل انجام است
+            string a=null;
+
+            a ??= "Alireza";
+        }
+
+        #endregion
     }
 }
