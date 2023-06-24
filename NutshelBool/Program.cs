@@ -3,9 +3,11 @@
 using NutshelBooK;
 using NutshelBool;
 using static NutshelBool.CSharpExample;
-
+using person = NutshelBooK.Person;
+using child = NutshelBooK.Child;
 CSharpExample examp = new CSharpExample();
 
+#region Page30 Until 63
 //examp.NondestructiveMutationForAnonymousypes();
 
 //examp.NewDeconstructionSyntax();
@@ -14,7 +16,7 @@ CSharpExample examp = new CSharpExample();
 //logger.ExampleLog("Test");
 
 
-Page30Until60Nutshel page30Until60 = new ();
+Page30Until60Nutshel page30Until60 = new();
 
 //page30Until60.Literals();
 
@@ -25,7 +27,10 @@ Page30Until60Nutshel page30Until60 = new ();
 //page30Until60.TestRef(ref number);
 
 //Console.WriteLine(number);
+#endregion
 
+
+#region Page 60 Until 100
 //NutshelPage67Until100 page67Until100 = new ();
 
 //page67Until100.ChangeFullName();
@@ -34,5 +39,14 @@ Page30Until60Nutshel page30Until60 = new ();
 
 
 //page67Until100.CheckedAndUnchecked();
+#endregion
 
+
+
+
+#region Page 101 Until 200
+
+child child=new child("Alireza","Rezaee",32);
+child.AgeChecker();
+#endregion
 Console.ReadLine();
