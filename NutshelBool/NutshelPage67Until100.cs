@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using static System.Console;
 namespace NutshelBooK
 {
     public class NutshelPage67Until100
@@ -148,5 +148,45 @@ namespace NutshelBooK
             }
         }
         #endregion
+
+        #region Global Using
+        public void GlobalAndStatic()
+        {
+            //ما می توانیم با پیشوند
+            //static
+            //در 
+            //using
+            //ها از تکرار کد کلاس های ثابت جلوگیری کنیم
+            WriteLine("");
+        }
+        #endregion
+    }
+
+
+    public class TestInitiazField
+    {
+        public TestInitiazField(int inputAge)
+        {
+            
+            Age = inputAge;
+            
+        }
+        public int Age = 20;
+
+        //Static Readonly
+        //این نوع تعریف فقط در مقدار دهی اولیه قابل مقدار دهی است و در سازنده هم قابل مقدار دهی نیست
+
+        //const vs static readonly
+        //کانست ها مقدار از پیش تعریف شده فقط میگیرند مثلا ساعت جاری را هم قبول نمی کنند
+        //استاتیک رید اونلی مقدار اولیه داینامیک قبول می کند
+
+
+       // public const string expireDate=DateTime.Now.ToString();//compiler Error
     }
 }
+
+
+
+
+
+

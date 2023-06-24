@@ -26,12 +26,13 @@ Page30Until60Nutshel page30Until60 = new ();
 
 //Console.WriteLine(number);
 
-NutshelPage67Until100 page67Until100 = new ();
+//NutshelPage67Until100 page67Until100 = new ();
 
 //page67Until100.ChangeFullName();
 
 //page67Until100.TellMeTheType("hi");
 
 
-page67Until100.CheckedAndUnchecked();
+//page67Until100.CheckedAndUnchecked();
+
 Console.ReadLine();
