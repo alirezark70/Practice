@@ -42,11 +42,26 @@ Page30Until60Nutshel page30Until60 = new();
 #endregion
 
 
+#region Indexer In Ef core
+public class Blog
+{
+    private readonly Dictionary<string,object> _data = new Dictionary<string,object>();
 
+    public int BlogId { get; set; }
+
+    public object this[string key]
+    {
+        get { return _data[key]; }
+        set { _data[key] = value; }
+    }
+}
+#endregion
 
 #region Page 101 Until 200
 
 child child=new child("Alireza","Rezaee",32);
 child.AgeChecker();
+
+
 #endregion
 Console.ReadLine();
