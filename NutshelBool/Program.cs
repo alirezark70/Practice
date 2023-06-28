@@ -1,11 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using NutshelBooK;
-using NutshelBool;
 using static NutshelBool.CSharpExample;
 using person = NutshelBooK.Person;
-using child = NutshelBooK.Child;
-CSharpExample examp = new CSharpExample();
+using childClasses = NutshelBooK.Child;
+using NutshelBool;
+
 
 #region Page30 Until 63
 //examp.NondestructiveMutationForAnonymousypes();
@@ -42,26 +42,16 @@ Page30Until60Nutshel page30Until60 = new();
 #endregion
 
 
-#region Indexer In Ef core
-public class Blog
-{
-    private readonly Dictionary<string,object> _data = new Dictionary<string,object>();
 
-    public int BlogId { get; set; }
-
-    public object this[string key]
-    {
-        get { return _data[key]; }
-        set { _data[key] = value; }
-    }
-}
-#endregion
 
 #region Page 101 Until 200
 
-child child=new child("Alireza","Rezaee",32);
-child.AgeChecker();
 
+//CSharpExample examp = new CSharpExample();
+//NutshelBooK.Child ghf = new("Alireza", "Rezaee", 30);
 
+List<FinalizersExample> finalizers = new List<FinalizersExample>();
+finalizers.Add(new FinalizersExample());
+finalizers = null;
 #endregion
 Console.ReadLine();
