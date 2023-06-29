@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
@@ -35,7 +36,7 @@ namespace NutshelBooK
             _age = age;
         }
         //موارد استفاده از سازنده ثابت
-        
+
 
         public void AgeChecker()
         {
@@ -56,7 +57,7 @@ namespace NutshelBooK
         public decimal X
         {
             get { return _x; }
-           private set { _x = Math.Round(value,2); }
+            private set { _x = Math.Round(value, 2); }
         }
     }
     #endregion
@@ -67,7 +68,7 @@ namespace NutshelBooK
         //مدیریت اشیا یا آبجکت های در سی شارپ است
         //برای آزادسازی منابع کنترل نشده توسط آبجکت
         //Dispose And Finalaize
-        
+
         //Finalaize
         //توسط garbage collector 
         //فراخوانی میشه  به صورت اتوماتیک و برنامه نویس کنترلی روش نداره
@@ -100,4 +101,210 @@ namespace NutshelBooK
         }
     }
     #endregion
+
+
+    #region Partial Class And Method
+    public partial class PartialExample
+    {
+
+    }
+
+    public partial class AExample
+    {
+        partial void OnSomethingHappened(string s);
+    }
+
+    //This part can be in a separate file.
+    public partial class AExample
+    {
+        // Comment out this method and the program
+        // will still compile.
+        partial void OnSomethingHappened(String s)
+        {
+            Console.WriteLine("Something happened: {0}", s);
+        }
+    }
+
+    #endregion
+
+
+    #region Inheritance And Polyphormic
+
+    //Upcasting
+    //تدبیل فرزند به والد را می گویند که به صورت ضمنی انجام می شود 
+    public class Asset
+    {
+        public int Age { get; set; }
+        public void Display(string name)
+        {
+            WriteLine(name);
+        }
+    }
+
+    public class Stuck:Asset
+    {
+
+    }
+
+    public class House:Asset
+    {
+        public void OwnerName()
+        {
+            WriteLine("Test");
+        }
+    }
+
+
+    public class PolyphormicExample
+    {
+        
+        
+        public void UpcastingMethod()
+        {
+            //Upcasting
+            //تدبیل فرزند به والد را می گویند که به صورت ضمنی انجام می شود 
+            //this is Upcasting
+            House house = new House() { };
+            Asset asset = house;
+
+
+            var test = asset.Display;
+           // test.OwnerName(); تبدیل انجام شده است ولی والد دیدی به محتوای متد های فرزند ندارد و خطا کامپایلر تایپ میدهد
+        }
+
+        public void DownCasting()
+        {
+            //Downcasting
+            Asset newAsset =new Asset();
+
+            //الان رفرنس هم به والد و هم به خود دسترسی دارد
+            House house =(House) newAsset;
+            house.OwnerName();
+            house.Display("Test");
+        }
+
+        public void AsKeyword()
+        {
+            //ممکن است عملیات دان کست با خطا روبرو شود و برای کنترل این خطا بهتر است از 
+            //as
+            //استفاده نکنیم
+
+            //اگر استفاده کنیم و خطا دریافت کنیم نمی توانیم بفهمیم که آیا مقدار خالی است یا یک کلاس که میخواهیم کست کنیم نیست
+            Asset newAsset = new Asset();
+
+            House house =  newAsset as House;
+            house?.OwnerName();
+        }
+
+    }
+    #endregion
+
+
+    #region Creating Type
+
+
+    #region Is Keyword
+    public class IsClassExample
+    {
+        public void IsExample()
+        {
+            //برای چک کردن مقادیر رفرنس تایپ ها استفاده میشود
+            //ولیو تایپ ها را قادر به چک کردن نیست
+
+            //مثال
+            Stuck stuck = new Stuck();
+            if (stuck is Stuck) { }
+
+            //می توانیم در هنگام استفاده از کلمه کلیدی
+            //is
+            //یک متغییر محلی تعریف کنیم
+            //در تیکه کد زیر در هنگام عملیات چک ما یک متغییر با اسم 
+            //a 
+            //تعریف کردیم
+            if (stuck is Asset a)
+                a.Display("Test");
+
+
+            //می توان بعد از کست کردن اعمال شرطی هم قرار داد
+            if(stuck is Asset b && b.Age>18)
+                b.Display("Test");
+
+        }
+    }
+    #endregion
+
+
+    #region Virtual Function Member
+
+    //یک متد یا فیلد یا ایندکسر یا پروپرتی می تواند 
+    //virtual 
+    //تعریف شود و در کلاس های فرزند رفتار را لغو و یا تغییر دهد
+
+    public class AssetVirtualExample
+    {
+        public virtual decimal Liability => 0;
+    }
+
+    public class HouseVirtualExample: AssetVirtualExample
+    {
+        public decimal Mortgage { get; set; }
+
+        public override decimal Liability => Mortgage;
+
+    }
+    public class ImplimentVirtual
+    {
+
+        public void TestExample()
+        {
+            HouseVirtualExample house1 = new HouseVirtualExample() { Mortgage = 20000 };
+
+            AssetVirtualExample asset = house1;
+
+           var result= asset.Liability;// result is 20000
+        }
+        
+        //tips
+        //استفاده مجازی سازی در سازنده یا کانستراکتو کاری خطرناک است
+        //چون پیاده ساز های دیگر ممکن است از این ویژگی خبر نداشته باشند
+    }
+
+    #endregion
+
+
+    #region Covariant Return Type
+    public class AssetCovariant
+    {
+        public string Name { get; set; }
+
+        public virtual AssetCovariant Clone() => new AssetCovariant { Name = Name };
+    }
+
+    public class  HouseCovariant: AssetCovariant
+    {
+        public decimal Mortage;
+
+        public bool Read { get; set; }
+
+        public override HouseCovariant Clone()
+        {
+            this.Read = true;
+            return this;
+        }
+    }
+
+    public class ExampelCovariant
+    {
+        public void Test()
+        {
+            var house = new HouseCovariant() { Name = "Pardis Home", Mortage = 20000 };
+
+            house.Clone();
+            AssetCovariant asset = house;
+        }
+    }
+    #endregion
+
+    #endregion
+
 }

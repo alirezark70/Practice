@@ -53,5 +53,9 @@ Page30Until60Nutshel page30Until60 = new();
 List<FinalizersExample> finalizers = new List<FinalizersExample>();
 finalizers.Add(new FinalizersExample());
 finalizers = null;
+
+ExampelCovariant exampelCovariant = new ExampelCovariant();
+
+exampelCovariant.Test();
 #endregion
 Console.ReadLine();
