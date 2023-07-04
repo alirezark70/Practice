@@ -141,12 +141,12 @@ namespace NutshelBooK
         }
     }
 
-    public class Stuck:Asset
+    public class Stuck : Asset
     {
 
     }
 
-    public class House:Asset
+    public class House : Asset
     {
         public void OwnerName()
         {
@@ -157,8 +157,8 @@ namespace NutshelBooK
 
     public class PolyphormicExample
     {
-        
-        
+
+
         public void UpcastingMethod()
         {
             //Upcasting
@@ -169,16 +169,16 @@ namespace NutshelBooK
 
 
             var test = asset.Display;
-           // test.OwnerName(); تبدیل انجام شده است ولی والد دیدی به محتوای متد های فرزند ندارد و خطا کامپایلر تایپ میدهد
+            // test.OwnerName(); تبدیل انجام شده است ولی والد دیدی به محتوای متد های فرزند ندارد و خطا کامپایلر تایپ میدهد
         }
 
         public void DownCasting()
         {
             //Downcasting
-            Asset newAsset =new Asset();
+            Asset newAsset = new Asset();
 
             //الان رفرنس هم به والد و هم به خود دسترسی دارد
-            House house =(House) newAsset;
+            House house = (House)newAsset;
             house.OwnerName();
             house.Display("Test");
         }
@@ -192,7 +192,7 @@ namespace NutshelBooK
             //اگر استفاده کنیم و خطا دریافت کنیم نمی توانیم بفهمیم که آیا مقدار خالی است یا یک کلاس که میخواهیم کست کنیم نیست
             Asset newAsset = new Asset();
 
-            House house =  newAsset as House;
+            House house = newAsset as House;
             house?.OwnerName();
         }
 
@@ -226,7 +226,7 @@ namespace NutshelBooK
 
 
             //می توان بعد از کست کردن اعمال شرطی هم قرار داد
-            if(stuck is Asset b && b.Age>18)
+            if (stuck is Asset b && b.Age > 18)
                 b.Display("Test");
 
         }
@@ -245,7 +245,7 @@ namespace NutshelBooK
         public virtual decimal Liability => 0;
     }
 
-    public class HouseVirtualExample: AssetVirtualExample
+    public class HouseVirtualExample : AssetVirtualExample
     {
         public decimal Mortgage { get; set; }
 
@@ -261,9 +261,9 @@ namespace NutshelBooK
 
             AssetVirtualExample asset = house1;
 
-           var result= asset.Liability;// result is 20000
+            var result = asset.Liability;// result is 20000
         }
-        
+
         //tips
         //استفاده مجازی سازی در سازنده یا کانستراکتو کاری خطرناک است
         //چون پیاده ساز های دیگر ممکن است از این ویژگی خبر نداشته باشند
@@ -280,7 +280,7 @@ namespace NutshelBooK
         public virtual AssetCovariant Clone() => new AssetCovariant { Name = Name };
     }
 
-    public class  HouseCovariant: AssetCovariant
+    public class HouseCovariant : AssetCovariant
     {
         public decimal Mortage;
 
@@ -303,6 +303,74 @@ namespace NutshelBooK
             AssetCovariant asset = house;
         }
     }
+    #endregion
+
+
+    #region Hiding Inheruted Members
+    public abstract class AMember
+    {
+        public int Count { get; set; }
+
+        public int Counter { get; set; }
+    }
+
+    public abstract class BMember : AMember
+    {
+        //وقتی که یک فیلد در جدول والد و فرزند هستش هشدار میده
+        //باید از کلمه کلیدی 
+        //new
+        //استفاده کنید برای حل این مشکل
+        public int Counter { get; set; }
+    }
+    #endregion
+
+
+    #region Difference between Override and Hider
+    public class BaseClass
+    {
+        public virtual void Foo() { WriteLine("BaseClass.Foo"); }
+    }
+
+    public class Overrider: BaseClass
+    {
+        public override void Foo() { WriteLine("Overrider.Foo"); }
+    }
+
+    public class Hider : BaseClass
+    {
+        public new void Foo() { WriteLine("Hider.Foo"); }
+    }
+
+    public class DifferenceBetweenOverrideAndHider
+    {
+        public void Test()
+        {
+            //تفاوت بین 
+            //override
+            //and
+            //hider
+
+            Overrider overrider = new Overrider();
+            BaseClass b1 = overrider;
+            overrider.Foo();//Overrider.Foo
+            b1.Foo();//Overrider.Foo
+
+
+            Hider hider = new Hider();
+            BaseClass b2 = hider;
+            hider.Foo();//Hider.Foo
+            b2.Foo();//BaseClass.Foo
+        }
+    }
+    #endregion
+
+
+    #region Base Keyword
+    //با کلمه کلیدی 
+    //base
+    // برای اعضای پنهان می توان استفاده کرد
+    //ینی به صورت مستقیم از والد استفاده کرد
+    //همیشه سازنده کلاس والد اول اجرا می شود
     #endregion
 
     #endregion
