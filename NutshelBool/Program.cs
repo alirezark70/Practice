@@ -50,12 +50,24 @@ Page30Until60Nutshel page30Until60 = new();
 //CSharpExample examp = new CSharpExample();
 //NutshelBooK.Child ghf = new("Alireza", "Rezaee", 30);
 
-List<FinalizersExample> finalizers = new List<FinalizersExample>();
-finalizers.Add(new FinalizersExample());
-finalizers = null;
+//List<FinalizersExample> finalizers = new List<FinalizersExample>();
+//finalizers.Add(new FinalizersExample());
+//finalizers = null;
 
-ExampelCovariant exampelCovariant = new ExampelCovariant();
+//ExampelCovariant exampelCovariant = new ExampelCovariant();
 
-exampelCovariant.Test();
+//exampelCovariant.Test();
+
+//StackExample stackExample = new StackExample();
+//stackExample.Push("Alireza");
+//stackExample.Push("Sommaye");
+
+//Console.WriteLine(stackExample.Pop());
+//Console.WriteLine(stackExample.Pop());
+
+StructExample structExample = new StructExample();
+
+WebOptions optios = new WebOptions();
+optios.Protocol = "http";
 #endregion
 Console.ReadLine();

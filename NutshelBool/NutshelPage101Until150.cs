@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using static System.Console;
 namespace NutshelBooK
 {
-    public class NutshelPage101Until200
+    public class NutshelPage101Until150
     {
     }
 
@@ -338,6 +338,9 @@ namespace NutshelBooK
 
     public class Hider : BaseClass
     {
+        //زمانی که ما کلمه کلیدی 
+        //new
+        //استفاده می کنیم یعنی یک شی جدید از آن ویژگی ساختیم و این دیگه متد اصلی والد نیست
         public new void Foo() { WriteLine("Hider.Foo"); }
     }
 
@@ -373,6 +376,111 @@ namespace NutshelBooK
     //همیشه سازنده کلاس والد اول اجرا می شود
     #endregion
 
+    #region Constructors And Inheritance
+    public class BaseClassConAndInh
+    {
+        public int x;
+        //public BaseClassConAndInh() { }
+
+        public BaseClassConAndInh (int x) { this.x=x;}
+    }
+
+    public class SubClassConAndInh: BaseClassConAndInh
+    {
+        public SubClassConAndInh(int x):base(x) { }
+    }
+
+    #endregion
+
+
+    #region Constructor And Field Initialization Order
+    //ترتیب اجرا شدن کلاس فرزند ووالد 
+
+    public class ACAFIO
+    {
+        int x = 1; //Executes 3st
+        public ACAFIO(int x)
+        {
+            //Executes 4st
+        }
+    }
+    public class BCAFIO: ACAFIO
+    {
+        int y = 1; //Executes 1st
+        public BCAFIO(int x):base(x=1) //Executes 2st
+        {
+            //Executes 5st
+        }
+    }
+    #endregion
+
+    #region The Object Type
+    //Stack  یا پشته
+    //استک یا پشته یک نوع خطی از ساختار داده است که قادر به ذخیره اشیا است
+    //ساختار داده اینگونه است Lifo
+    //Last In First Out
+    //آخرین موردی که اضافه میشه اولین موردی است که از لیست خارج می شود
+
+    //با توجه به مثال کتاب از خود کلاس و آبچک استفاده شده است
+    public class StackExample
+    {
+        int position;
+        object[] data =new object[10];
+
+        public void Push(object obj)
+        {
+            data[position++] = obj;
+            
+        }
+
+        public object Pop() => data[--position];
+    }
+    #endregion
+
+
+    #region GetType And typeOf
+    //Call GetType On The Instance
+    //Use the tyeof operator on a type name
+    //GetType is evaluated at runtime; typeof is evaluated statically at compile time
+
+    #endregion
+
+
+    #region Struct And Class
+    //Struct is value type and class is Reference Type
+    //Struct does not support inheritance
+    //Struct doesn't have Finalizer Becuase this is not subclassess
+
+    //Struct
+    //همه فیلد های که در استراکت تعریف می شوند در سازنده باید مقدار داشته باشند در غیر این صورت خطای کامپایلر میگیریم
+    //بهترین حالت برای استفاده از این برای مقادیر عددی می باشد 
+
+    public struct StructExample
+    {
+        public int x;
+        public int y;
+        public StructExample(int x=1,int y = 1)
+        {
+            this.x = x;
+            this.y = y;
+        }
+       
+    }
+
+    public struct WebOptions
+    {
+        string _protocol;
+
+        public string Protocol { get => _protocol ?? "https"; set => _protocol = value; }
+    }
+
+    //reference type always live on the heap
+    //value type live on stack
+    //when value type field in a class , it will reside on the heap
+    //وقتی یک فیلدی که ولیو تایپ می باشد و در کلاس قرار داده می شود در همان فضای هیپ که کلاس ذخیره می شود قرار می گیرد
+
+    
+    #endregion
     #endregion
 
 }
