@@ -331,7 +331,7 @@ namespace NutshelBooK
         public virtual void Foo() { WriteLine("BaseClass.Foo"); }
     }
 
-    public class Overrider: BaseClass
+    public class Overrider : BaseClass
     {
         public override void Foo() { WriteLine("Overrider.Foo"); }
     }
@@ -382,12 +382,12 @@ namespace NutshelBooK
         public int x;
         //public BaseClassConAndInh() { }
 
-        public BaseClassConAndInh (int x) { this.x=x;}
+        public BaseClassConAndInh(int x) { this.x = x; }
     }
 
-    public class SubClassConAndInh: BaseClassConAndInh
+    public class SubClassConAndInh : BaseClassConAndInh
     {
-        public SubClassConAndInh(int x):base(x) { }
+        public SubClassConAndInh(int x) : base(x) { }
     }
 
     #endregion
@@ -404,10 +404,10 @@ namespace NutshelBooK
             //Executes 4st
         }
     }
-    public class BCAFIO: ACAFIO
+    public class BCAFIO : ACAFIO
     {
         int y = 1; //Executes 1st
-        public BCAFIO(int x):base(x=1) //Executes 2st
+        public BCAFIO(int x) : base(x = 1) //Executes 2st
         {
             //Executes 5st
         }
@@ -425,12 +425,12 @@ namespace NutshelBooK
     public class StackExample
     {
         int position;
-        object[] data =new object[10];
+        object[] data = new object[10];
 
         public void Push(object obj)
         {
             data[position++] = obj;
-            
+
         }
 
         public object Pop() => data[--position];
@@ -454,18 +454,20 @@ namespace NutshelBooK
     //Struct
     //همه فیلد های که در استراکت تعریف می شوند در سازنده باید مقدار داشته باشند در غیر این صورت خطای کامپایلر میگیریم
     //بهترین حالت برای استفاده از این برای مقادیر عددی می باشد 
-
+    //ساختارها فقط می توانند از اینترفیس ها ارث بری کنند و از کلاس ها نمی توانند مشتق شوند
     public struct StructExample
     {
         public int x;
         public int y;
-        public StructExample(int x=1,int y = 1)
+        public StructExample(int x = 1, int y = 1)
         {
             this.x = x;
             this.y = y;
         }
-       
+
     }
+
+
 
     public struct WebOptions
     {
@@ -479,8 +481,113 @@ namespace NutshelBooK
     //when value type field in a class , it will reside on the heap
     //وقتی یک فیلدی که ولیو تایپ می باشد و در کلاس قرار داده می شود در همان فضای هیپ که کلاس ذخیره می شود قرار می گیرد
 
-    
+
     #endregion
+
+
+    #region Interface
+    public interface ITestInterfaceA
+    {
+        void Foo();
+    }
+    public interface ITestInterfaceB
+    {
+        void Foo();
+    }
+
+    public class ImplimentInterfaces : ITestInterfaceA, ITestInterfaceB
+    {
+        public void Foo()
+        {
+            throw new NotImplementedException();
+        }
+
+        void ITestInterfaceB.Foo()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class ExampleInterface
+    {
+        public void Test()
+        {
+            //برای دسترسی به متدی در اینترفیس که هم نام است بدین شیو استفاده می کنیم
+
+            ImplimentInterfaces implimentInterfaces = new ImplimentInterfaces();
+
+            implimentInterfaces.Foo();// Implimentation Interface A
+
+            ((ITestInterfaceB)implimentInterfaces).Foo(); // Implimentation Interface B
+        }
+    }
+    #endregion
+
+
+    #region Implementing Interface Members Virtually
+    public interface IUndoAble
+    {
+        void Undo();
+    }
+    public class TextBox : IUndoAble
+    {
+        public virtual void Undo()
+        {
+            WriteLine("TextBox Undo");
+        }
+    }
+    public class RichTextBox:TextBox, IUndoAble
+    {
+        public override void Undo()
+        {
+            WriteLine("RichBox Undo");
+        }
+    }
+
+    public interface IUndoAbleB
+    {
+        void Undo();
+    }
+    public class TextBoxB : IUndoAbleB
+    {
+        void IUndoAbleB.Undo()
+        {
+            WriteLine("TextBox Undo");
+        }
+        protected virtual void Undo()
+        {
+            Undo();
+        }
+    }
+    public class RichTextBoxB : TextBoxB, IUndoAbleB
+    {
+        protected override void Undo()
+        {
+           
+            WriteLine("RichTextBox Undo");
+        }
+    }
+
+    public class VirtuallyInterface
+    {
+        public void Test()
+        {
+
+            RichTextBox richTextBox = new RichTextBox();
+            ((TextBox)richTextBox).Undo();//RichText
+            //متدی که مجازی یا
+            //virtual 
+            //شده با کست کردن نمی شود به متد های پنهانش دسترسی پیدا کرد
+            //برای پیاده سازی این شرایط کلاس باید از اینترفیس خود مشتق شود و نه با کلاس پایه
+        }
+
+        //بهترین روش برای پیاده سازی بدین شکل است
+
+    }
+    #endregion
+    //عباسی جنوبی کوچه درویش پناه پلاک 5 طبقه دوم واحد 4
+
     #endregion
 
 }

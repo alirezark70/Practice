@@ -65,9 +65,14 @@ Page30Until60Nutshel page30Until60 = new();
 //Console.WriteLine(stackExample.Pop());
 //Console.WriteLine(stackExample.Pop());
 
-StructExample structExample = new StructExample();
+//StructExample structExample = new StructExample();
 
-WebOptions optios = new WebOptions();
-optios.Protocol = "http";
+//WebOptions optios = new WebOptions();
+//optios.Protocol = "http";
+
+
+
+RichTextBox richTextBox=new RichTextBox();
+((TextBox)richTextBox).Undo();
 #endregion
 Console.ReadLine();
