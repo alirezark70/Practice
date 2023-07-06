@@ -586,7 +586,71 @@ namespace NutshelBooK
 
     }
     #endregion
-    //عباسی جنوبی کوچه درویش پناه پلاک 5 طبقه دوم واحد 4
+
+
+    #region Enums
+    public enum TestEnum:byte
+    {
+        //به صورت پیش فرض از صفر شروع می شود ولی می توان عدد هم مشخص کرد و از همان مقدار شروع شود
+        //به صورت پیش فرض مقدارش برابر است با دیتا تایپ 
+        //int
+        //ولی میشود مثل این اینام که تایپ شو من بایت انتخاب کردم تایپشو مشخص کنیم
+        first=1, second=2, third=3, fourth=4, fifth=5, sixth=6, seven=7
+    }
+
+
+    public class EnumExample
+    {
+        enum SingleHue : short
+        {
+            None = 0,
+            Black = 1,
+            Red = 2,
+            Green = 4,
+            Blue = 8
+        };
+
+        [Flags]
+        enum MultiHue : short
+        {
+            None = 0,
+            Black = 1,
+            Red = 2,
+            Green = 4,
+            Blue = 8
+        };
+
+
+        public void WithoutFlag()
+        {
+            for (int val = 0; val <= 16; val++)
+                Console.WriteLine("{0,3} - {1:G}", val, (SingleHue)val);
+        }
+
+        public void WithFlag()
+        {
+            for (int val = 0; val <= 16; val++)
+                Console.WriteLine("{0,3} - {1:G}", val, (MultiHue)val);
+
+
+            //برای اینکه چک کنیم یک اینام تعریف شده از روش زیر استفاده می کنیم
+
+            SingleHue enumValue = (SingleHue)14;
+
+            //با این روش می توانیم بفهمیم که یک مقدار اینام موجود هست یا خیر
+            var isCurrect=Enum.IsDefined(typeof(SingleHue), enumValue);
+        }
+
+    }
+
+
+    #endregion
+
+
+    #endregion
+
+
+    #region Nested Types
 
     #endregion
 

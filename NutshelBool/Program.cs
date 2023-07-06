@@ -70,9 +70,9 @@ Page30Until60Nutshel page30Until60 = new();
 //WebOptions optios = new WebOptions();
 //optios.Protocol = "http";
 
+EnumExample enumExample = new EnumExample();
+enumExample.WithFlag();
 
 
-RichTextBox richTextBox=new RichTextBox();
-((TextBox)richTextBox).Undo();
 #endregion
 Console.ReadLine();
