@@ -537,7 +537,7 @@ namespace NutshelBooK
             WriteLine("TextBox Undo");
         }
     }
-    public class RichTextBox:TextBox, IUndoAble
+    public class RichTextBox : TextBox, IUndoAble
     {
         public override void Undo()
         {
@@ -564,7 +564,7 @@ namespace NutshelBooK
     {
         protected override void Undo()
         {
-           
+
             WriteLine("RichTextBox Undo");
         }
     }
@@ -589,13 +589,13 @@ namespace NutshelBooK
 
 
     #region Enums
-    public enum TestEnum:byte
+    public enum TestEnum : byte
     {
         //به صورت پیش فرض از صفر شروع می شود ولی می توان عدد هم مشخص کرد و از همان مقدار شروع شود
         //به صورت پیش فرض مقدارش برابر است با دیتا تایپ 
         //int
         //ولی میشود مثل این اینام که تایپ شو من بایت انتخاب کردم تایپشو مشخص کنیم
-        first=1, second=2, third=3, fourth=4, fifth=5, sixth=6, seven=7
+        first = 1, second = 2, third = 3, fourth = 4, fifth = 5, sixth = 6, seven = 7
     }
 
 
@@ -638,7 +638,7 @@ namespace NutshelBooK
             SingleHue enumValue = (SingleHue)14;
 
             //با این روش می توانیم بفهمیم که یک مقدار اینام موجود هست یا خیر
-            var isCurrect=Enum.IsDefined(typeof(SingleHue), enumValue);
+            var isCurrect = Enum.IsDefined(typeof(SingleHue), enumValue);
         }
 
     }
@@ -652,6 +652,42 @@ namespace NutshelBooK
 
     #region Nested Types
 
+    #endregion
+
+    #region Generic
+    //جنیریک ها باعث می شوند ما بتوانیم از تکرار کد جلوگیری کنیم
+    public class TestGeneric
+    {
+        public static void Swap<T>(T a, T b)
+        {
+            //
+            T temp = a;
+            a = b;
+            b = temp;
+
+        }
+
+
+    }
+
+    //ما می توانیم مقدار را که یک نوع جنریک هست چک کنیم که مقدار نال نداشته باشد
+    public class ExampleGeneric<T> where T : notnull
+    {
+        void Example()
+        {
+            //اگر در زمان مقداردهی به متد جنریک متد و پارامترها هم نوع باشند خود کامپایلر تشخیص می دهد
+            TestGeneric.Swap(14, 15);
+        }
+    }
+    public interface Interface1
+    { }
+    public class SomeClass { }
+    public class ExampleGeneric<C, U> where C : SomeClass, Interface1 where U : new() 
+    {
+        //این کلاس ملزم شده است که از اینترفیس و کلاس معرفی شده مشتق شده 
+        //new
+        //هم می گویید این کلاس باید سازنده بدون پارامتر داشته باشد
+    }
     #endregion
 
 }
