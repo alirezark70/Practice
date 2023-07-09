@@ -70,9 +70,14 @@ Page30Until60Nutshel page30Until60 = new();
 //WebOptions optios = new WebOptions();
 //optios.Protocol = "http";
 
-EnumExample enumExample = new EnumExample();
-enumExample.WithFlag();
+//EnumExample enumExample = new EnumExample();
+//enumExample.WithFlag();
 
+//ExampleGenericConstraint constraint = new ExampleGenericConstraint();
+//constraint.TestMethod();
+
+UnmanagedTypes.DisplaySize<SingleHue>();
+UnmanagedTypes.DisplaySize<ushort>();
 
 #endregion
 Console.ReadLine();
