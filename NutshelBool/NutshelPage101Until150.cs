@@ -538,7 +538,7 @@ namespace NutshelBooK
             WriteLine("TextBox Undo");
         }
     }
-    public class RichTextBox:TextBox, IUndoAble
+    public class RichTextBox : TextBox, IUndoAble
     {
         public override void Undo()
         {
@@ -565,7 +565,7 @@ namespace NutshelBooK
     {
         protected override void Undo()
         {
-           
+
             WriteLine("RichTextBox Undo");
         }
     }
@@ -590,13 +590,13 @@ namespace NutshelBooK
 
 
     #region Enums
-    public enum TestEnum:byte
+    public enum TestEnum : byte
     {
         //به صورت پیش فرض از صفر شروع می شود ولی می توان عدد هم مشخص کرد و از همان مقدار شروع شود
         //به صورت پیش فرض مقدارش برابر است با دیتا تایپ 
         //int
         //ولی میشود مثل این اینام که تایپ شو من بایت انتخاب کردم تایپشو مشخص کنیم
-        first=1, second=2, third=3, fourth=4, fifth=5, sixth=6, seven=7
+        first = 1, second = 2, third = 3, fourth = 4, fifth = 5, sixth = 6, seven = 7
     }
 
 
@@ -639,7 +639,7 @@ namespace NutshelBooK
             SingleHue enumValue = (SingleHue)14;
 
             //با این روش می توانیم بفهمیم که یک مقدار اینام موجود هست یا خیر
-            var isCurrect=Enum.IsDefined(typeof(SingleHue), enumValue);
+            var isCurrect = Enum.IsDefined(typeof(SingleHue), enumValue);
         }
 
     }
@@ -652,6 +652,129 @@ namespace NutshelBooK
 
 
     #region Nested Types
+
+    #endregion
+
+    #region Generic
+    //جنیریک ها باعث می شوند ما بتوانیم از تکرار کد جلوگیری کنیم
+    public class TestGeneric:IComparable<int>
+    {
+        public static void Swap<T>(T a, T b)
+        {
+            //
+            T temp = a;
+            a = b;
+            b = temp;
+
+        }
+
+        public int CompareTo(int other)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    //ما می توانیم مقدار را که یک نوع جنریک هست چک کنیم که مقدار نال نداشته باشد
+    public class ExampleGeneric<T> where T : notnull
+    {
+        void Example()
+        {
+            //اگر در زمان مقداردهی به متد جنریک متد و پارامترها هم نوع باشند خود کامپایلر تشخیص می دهد
+            TestGeneric.Swap(14, 15);
+        }
+    }
+    public interface Interface1
+    { }
+    public class SomeClass { }
+    public class ExampleGeneric<C, U> where C : SomeClass, Interface1 where U : new()
+    {
+        //این کلاس ملزم شده است که از اینترفیس و کلاس معرفی شده مشتق شده 
+        //new
+        //هم می گویید این کلاس باید سازنده بدون پارامتر داشته باشد
+    }
+
+    #region Generic Constraints
+
+    public class ExampleGenericConstraint
+    {
+        //اینترفیس 
+        //icomparable
+        //یک اینترفیس مرتب سازی می باشد
+        //بیشتر برای مقایسه استفاده می شود و باید متدش که 
+        //compareTo
+        //می باشد پیاده سازی شود
+        public static T Max<T>(T a, T b) where T : IComparable<T>
+        {
+            return a.CompareTo(b) > 0 ? a : b;
+        }
+
+        //محدودیت ها یا
+        //Constraint
+        //ها به شرح زیر است
+
+
+        //where T : base-class   // Base-class constraint
+        //where T : interface    // Interface constraint
+        //where T : class        // Reference-type constraint
+        //where T : class?       // (see "Nullable Reference Types" in Chapter 1)
+        //where T : struct       // Value-type constraint (excludes Nullable types)
+        //where T : unmanaged    // Unmanaged constraint //باید حتما ساختار ولیو تایپ یا استراکت باشد و هر گونه رفرنس تایپ را قبول نمی کند
+        //where T : new()        // Parameterless constructor constraint// سازنده بدون پارامتر باشد
+        //where U : T            // Naked type constraint
+
+        public void TestMethod()
+        {
+            var result = Max<int>(10,11);
+
+            
+
+            WriteLine(result);
+        }
+    }
+
+
+    #region Unmanaged Types
+    public struct Coords<T>
+    {
+        public T X;
+        public T Y;
+    }
+
+    public class UnmanagedTypes
+    {
+        //محدودیت برای اینکه مشخص بشه که ممکنه تایپ های مدیریت نشده به متد ارسال بشه
+        public unsafe static void DisplaySize<T>() where T : unmanaged
+        {
+            WriteLine($"{typeof(T)} is unmanaged and its size is {sizeof(T)}");
+        }
+    }
+    #endregion
+
+    #region Default Generic Constrant
+    class A1
+    {
+        //در سی شارپ 9 برای رفع ابهام در ولیو تایپ ها ساختارهای استراکت برای پارامترهای نال اضافه شد
+        //و ابهام را برطرف می کند
+        public virtual void F1<T>(T? t) where T : struct { }
+        public virtual void F1<T>(T? t) where T : class { }
+    }
+
+    class B1 : A1
+    {
+        public override void F1<T>(T? t) /*where T : struct*/ { }
+        public override void F1<T>(T? t) where T : class { }
+    }
+    #endregion
+
+    #region Nuked Type Constraint
+    //کلیت تعریف این است که مدل اول با مدل دوم جنزیک یا باید هر دو نال پذیر باشند و یا برعکس
+    //شکل هم باید باشند
+    //////class Stack<T> { Stack<U> FilteredStack<U>() where U : T { ...} }
+    #endregion
+
+
+    #endregion
+
 
     #endregion
 
