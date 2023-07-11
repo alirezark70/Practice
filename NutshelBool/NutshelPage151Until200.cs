@@ -19,8 +19,8 @@ namespace NutshelBooK
             //if(arg is StringBuilder)
             //    return (StringBuilder)arg;//اگر کد را اینگونه بنویسیم ابهام ایجاد می شود 
 
-            StringBuilder stringBuilder=arg as StringBuilder;
-            if (stringBuilder!=null)
+            StringBuilder stringBuilder = arg as StringBuilder;
+            if (stringBuilder != null)
             {
                 return stringBuilder;
             }
@@ -31,8 +31,8 @@ namespace NutshelBooK
 
         public int Foo2<T>(T arg)
         {
-           //وقتی ما میخواهیم یک مدل جنریک را به یک ولیو تایپ تبدیل کنیم تبدیل انباکسین هم با ابهام مواجه است
-           //بهتر است به آبجکت تبدیل کنیم سپس به یک ولیو تایپ تبدیل اش کنیم
+            //وقتی ما میخواهیم یک مدل جنریک را به یک ولیو تایپ تبدیل کنیم تبدیل انباکسین هم با ابهام مواجه است
+            //بهتر است به آبجکت تبدیل کنیم سپس به یک ولیو تایپ تبدیل اش کنیم
 
             return (int)(object)arg;
         }
@@ -43,18 +43,18 @@ namespace NutshelBooK
 
 
     #region Covariance
-    
+
     public class CovarianceExample
     {
         class Animal
         {
 
         }
-        class Bear:Animal
+        class Bear : Animal
         {
 
         }
-        class Camel:Animal
+        class Camel : Animal
         { }
 
 
@@ -71,11 +71,11 @@ namespace NutshelBooK
 
         class ZooCleaner
         {
-            public static void Wash(Stack<Animal>animals)  //Compailer Time Error
-            { 
+            public static void Wash(Stack<Animal> animals)  //Compailer Time Error
+            {
             }
 
-            public static void WashWithoutError<T>(Stack<T> animals)where T :Animal//این خط باعث می شود ما با ابهام کوواریانس مواجه نشویم
+            public static void WashWithoutError<T>(Stack<T> animals) where T : Animal//این خط باعث می شود ما با ابهام کوواریانس مواجه نشویم
             {
 
             }
@@ -83,7 +83,7 @@ namespace NutshelBooK
 
         void ExampleMethod()
         {
-            Stack<Bear>bears = new Stack<Bear>();
+            Stack<Bear> bears = new Stack<Bear>();
             //Stack<Animal> animals = bears;//این خط خطا میدهد و دلیل خطا هم کوواریانس است
 
             //animals.Push(new Camel());//تلاش برای ریختن مدل شتر درون مدل پرنده ها
@@ -144,19 +144,19 @@ namespace NutshelBooK
 
         void Trasform(int[] values, Transformer t)
         {
-            for(int i=0; i<values.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
                 values[i] = t(i);
             }
         }
-        
+
 
     }
     #endregion
 
     #region Instance And Static Method Targets
 
-    
+
 
     public class InstanceAndStaticMethodTargets
     {
@@ -168,9 +168,25 @@ namespace NutshelBooK
 
             public void ReportProgress(int percentComplete)
             {
-                Console.WriteLine(Prefix+ percentComplete);
+                Console.WriteLine(Prefix + percentComplete);
             }
         }
+
+        public void MethodTest()
+        {
+            MyReporter r = new MyReporter();
+
+            r.Prefix = "%Complete : ";
+            progressReporter progress=r.ReportProgress;
+            progress(99);
+
+            Console.WriteLine(progress.Target==r);
+
+            Console.WriteLine(progress.Method);
+        }
+
+        
+
     }
 
     #endregion
