@@ -657,7 +657,7 @@ namespace NutshelBooK
 
     #region Generic
     //جنیریک ها باعث می شوند ما بتوانیم از تکرار کد جلوگیری کنیم
-    public class TestGeneric:IComparable<int>
+    public class TestGeneric : IComparable<int>
     {
         public static void Swap<T>(T a, T b)
         {
@@ -691,6 +691,8 @@ namespace NutshelBooK
         //این کلاس ملزم شده است که از اینترفیس و کلاس معرفی شده مشتق شده 
         //new
         //هم می گویید این کلاس باید سازنده بدون پارامتر داشته باشد
+
+
     }
 
     #region Generic Constraints
@@ -724,9 +726,9 @@ namespace NutshelBooK
 
         public void TestMethod()
         {
-            var result = Max<int>(10,11);
+            var result = Max<int>(10, 11);
 
-            
+
 
             WriteLine(result);
         }
@@ -743,7 +745,7 @@ namespace NutshelBooK
     public class UnmanagedTypes
     {
         //محدودیت برای اینکه مشخص بشه که ممکنه تایپ های مدیریت نشده به متد ارسال بشه
-        public unsafe static void DisplaySize<T>() where T : unmanaged
+        public unsafe static void DisplaySize<T>()
         {
             WriteLine($"{typeof(T)} is unmanaged and its size is {sizeof(T)}");
         }
@@ -775,6 +777,25 @@ namespace NutshelBooK
 
     #endregion
 
+
+    #endregion
+
+    #region Test
+    public class TestDefault
+    {
+        public virtual void TestMethod<T>(T? input) where T : struct
+        {
+
+        }
+    }
+
+    public class TestDefaultB : TestDefault
+    {
+        public override void TestMethod<T>(T? input)
+        {
+            base.TestMethod(input);
+        }
+    }
 
     #endregion
 

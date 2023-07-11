@@ -76,8 +76,12 @@ Page30Until60Nutshel page30Until60 = new();
 //ExampleGenericConstraint constraint = new ExampleGenericConstraint();
 //constraint.TestMethod();
 
-UnmanagedTypes.DisplaySize<SingleHue>();
-UnmanagedTypes.DisplaySize<ushort>();
+UnmanagedTypes.DisplaySize<int>();
 
 #endregion
+
+
+//TestHidingEample testHidingEample = new TestHidingEample();
+
+//testHidingEample.Test();
 Console.ReadLine();
