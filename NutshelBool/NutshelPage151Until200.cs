@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sleep = System.Threading.Thread;
+using static System.Console;
+using static System.IO.File;
 
 namespace NutshelBooK
 {
@@ -192,8 +195,52 @@ namespace NutshelBooK
     #endregion
 
 
+    #region Multicast Delegate 
+    public class MultiCastDelegateExample
+    {
+        //می توان دلیگیت ها را به چندین نوبت مختلف  اجرا کرد
+        public delegate void ProgressReporter(int percentComplete);
+
+        class Util
+        {
+            public static void HardWork(ProgressReporter pr)
+            {
+                for(int i=0; i < 10; i++)
+                {
+                    pr(i * 10);// Invoke Delegate
+
+                    sleep.Sleep(1500); //Simulate Hard Work
+
+                }
+            }
+        }
+
+        public void Execute()
+        {
+            ProgressReporter p= WriteProgressToConsole;
+
+            p += WriteProgressToFile;
+
+            Util.HardWork(p);
+        }
+
+        void WriteProgressToConsole(int percentComplete)
+        {
+            WriteLine(percentComplete);
+        }
+
+        void WriteProgressToFile(int percentComplete)
+        {
+            AppendAllText(@"D:\\progress.txt",  $"{percentComplete.ToString()}\n");
+        }
+    }
+    #endregion
 
 
+    #region Action Delegate
+    //به یک دلیگیتی که نه پارامتر دارد و نه خروجی یک اکشن گفته می شود
+
+    #endregion
 
     #endregion
 
