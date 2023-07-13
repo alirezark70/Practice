@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using sleep = System.Threading.Thread;
 using static System.Console;
 using static System.IO.File;
+using static NutshelBooK.EventExample;
+using System.Runtime.CompilerServices;
 
 namespace NutshelBooK
 {
@@ -180,15 +182,15 @@ namespace NutshelBooK
             MyReporter r = new MyReporter();
 
             r.Prefix = "%Complete : ";
-            progressReporter progress=r.ReportProgress;
+            progressReporter progress = r.ReportProgress;
             progress(99);
 
-            Console.WriteLine(progress.Target==r);
+            Console.WriteLine(progress.Target == r);
 
             Console.WriteLine(progress.Method);
         }
 
-        
+
 
     }
 
@@ -205,7 +207,7 @@ namespace NutshelBooK
         {
             public static void HardWork(ProgressReporter pr)
             {
-                for(int i=0; i < 10; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     pr(i * 10);// Invoke Delegate
 
@@ -217,7 +219,7 @@ namespace NutshelBooK
 
         public void Execute()
         {
-            ProgressReporter p= WriteProgressToConsole;
+            ProgressReporter p = WriteProgressToConsole;
 
             p += WriteProgressToFile;
 
@@ -231,10 +233,174 @@ namespace NutshelBooK
 
         void WriteProgressToFile(int percentComplete)
         {
-            AppendAllText(@"D:\\progress.txt",  $"{percentComplete.ToString()}\n");
+            AppendAllText(@"D:\\progress.txt", $"{percentComplete.ToString()}\n");
         }
     }
     #endregion
+
+
+    #region The Func And Action Delegates
+    public class TheFuncAndActionDelegates
+    {
+        static void Transform<T>(T[] values, Func<T, T> transformer)
+        {
+            for (int i = 0; i < values.Length; i++)
+                values[i] = transformer(values[i]);
+        }
+
+        //دو دلیگیت همیشه باهم ناسازگار هستند حتی اگر پارامترها و خروجی آن ها هم یکی باشند
+        delegate void D1(int x);
+        delegate void D2(int x);
+        void Example(int x) { }
+
+        void MethodTest()
+        {
+            D1 d1 = Example;
+            //  D2 d2 = d1; این خط خطا میدهد
+            //ولی شکل زیر صحیح است
+            D2 d2 = new D2(d1);
+
+            //زمانی که سی شارپ به وجود آمد مقادیر 
+            //Func And Action 
+            //نبود و بدین دلیل برنامه نویس ها از دلیگیت استفاده می کردند 
+
+
+        }
+
+
+        //--------------------------
+        //در هنگام فراخوانی یک متد وقتی پارامتر ما از نوع مرجع باشد در هنگام صدا زدن می تواند به صورت ضمنی تغییر کنند
+        delegate void StringAction(string s);
+        void MethodTest2()
+        {
+            void ActOnObject(object o) => Console.WriteLine(o);
+
+            StringAction sa = new StringAction(ActOnObject);
+            //در اینجا  آبجکت به صورت ضمنی به رشته تبدیل شد
+            sa("Hello");
+        }
+
+
+
+
+
+    }
+    #endregion
+
+
+    #region Event
+    //event
+    //وظیفه اصلی ایونت ها این است که جلوی تداخل دلیگیت ها را بگیرند
+    public class EventExample
+    {
+        public delegate void PriceChangeHandler(decimal oldPrice, decimal newPrice);
+
+        class BroadCaster
+        {
+            public event PriceChangeHandler PriceChange;
+
+            public void TestMethod()
+            {
+                PriceChange += BroadCaster_PriceChange;
+            }
+
+            private void BroadCaster_PriceChange(decimal oldPrice, decimal newPrice)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+    }
+
+    public class HowDoEventsWorkOnTheInside
+    {
+        //وقتی ما یک ایونتی را اجرا می کنید 3 اتفاق می افتد
+
+        // PriceChangedHandler priceChanged;  
+        // private delegatepublic
+        // event PriceChangedHandler PriceChanged
+        // {  add    { priceChanged += value; }
+        // remove { priceChanged -= value;
+        // }}
+        //دوتا کلمه کلیدی به اسم
+        //Add And Remove اضافه می کند
+
+        //در مرحله سوم کامپایلر می رود و میگردد به تمام رفرنس ها یا فیلد های دلیگیتی که به دلیگیت اصلی رفرنس دارند
+    }
+
+    public class PriceChangeExample
+    {
+        //یک مثال برای اینکه قیمت سهام وقتی تغییر میکند رویداد تغییر قیمت فعال می شود
+        string symbol;
+        public delegate void PriceChangeHandler(decimal newPrice, decimal lastPrice);
+        public PriceChangeExample(string symbol)
+        {
+            this.symbol = symbol;
+        }
+        public class Stock
+        {
+            string symbol;
+            decimal price;
+
+            public Stock(string symbol)
+            {
+                this.symbol = symbol;
+            }
+
+            //برای پیاده سازی از 
+            //eventHandler 
+            //استفاده می کنیم
+            public event EventHandler<PriceChangedEventArgs> PriceChanged;
+
+            protected virtual void OnPriceChanged(PriceChangedEventArgs e)
+            {
+                if(PriceChanged != null)
+                {
+                    PriceChanged(this, e);
+                }
+            }
+
+            public decimal Price
+            {
+                get => price;
+                set
+                {
+                    if (price == value) return;
+
+                    decimal oldPrice = price;
+                    price = value;
+
+                   OnPriceChanged(new PriceChangedEventArgs(oldPrice, price));
+                }
+            }
+
+            
+        }
+        //یک دیزاین پترن مشترک می باشد که در اکثر کتاب خانه های دات نت ایونت ها به این شکل پیاده سازی شده است
+        //کاربر بدون تغییر می توانند مدل های خودش را پیاده سازی کند
+        //می بایست از یک فضای نام 
+        //system.eventArgs
+        //استفاده کنیم 
+        //متد حتما باید وید باشد
+
+       public class PriceChangedEventArgs:System.EventArgs
+        {
+            public readonly decimal LastPrice;
+            public readonly decimal NewPrice;
+
+            public PriceChangedEventArgs(decimal newPrice, decimal lastPrice)
+            {
+                NewPrice = newPrice;
+                LastPrice = lastPrice;
+            }
+        }
+
+
+       
+    }
+    #endregion
+
 
 
     #region Action Delegate
