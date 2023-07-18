@@ -355,7 +355,7 @@ namespace NutshelBooK
 
             protected virtual void OnPriceChanged(PriceChangedEventArgs e)
             {
-                if(PriceChanged != null)
+                if (PriceChanged != null)
                 {
                     PriceChanged(this, e);
                 }
@@ -371,11 +371,11 @@ namespace NutshelBooK
                     decimal oldPrice = price;
                     price = value;
 
-                   OnPriceChanged(new PriceChangedEventArgs(oldPrice, price));
+                    OnPriceChanged(new PriceChangedEventArgs(oldPrice, price));
                 }
             }
 
-            
+
         }
         //یک دیزاین پترن مشترک می باشد که در اکثر کتاب خانه های دات نت ایونت ها به این شکل پیاده سازی شده است
         //کاربر بدون تغییر می توانند مدل های خودش را پیاده سازی کند
@@ -384,7 +384,7 @@ namespace NutshelBooK
         //استفاده کنیم 
         //متد حتما باید وید باشد
 
-       public class PriceChangedEventArgs:System.EventArgs
+        public class PriceChangedEventArgs : System.EventArgs
         {
             public readonly decimal LastPrice;
             public readonly decimal NewPrice;
@@ -397,7 +397,7 @@ namespace NutshelBooK
         }
 
 
-       
+
     }
     #endregion
 
@@ -407,6 +407,77 @@ namespace NutshelBooK
     //به یک دلیگیتی که نه پارامتر دارد و نه خروجی یک اکشن گفته می شود
 
     #endregion
+
+
+    #region Lambda Expressions
+
+    public class LambdaExpersions
+    {
+        //لامدا اکسپرشن با فانک و اکشن بیشتر استفاده می شود
+        delegate int Transformer(int x);
+
+        public Func<int, int> FuncExample { get; set; }
+
+        public void TestMethod()
+        {
+            //وقتی ما میخواهیم یک لامدا اکسپرشن تعریف کنیم 
+            //کامپایلر این کد را به یک دلیگیت تبدیل می کند
+            Transformer trs = x => x + x;
+
+            //ما می توانیم از یک فانک بدین صورت استفاده کنیم
+            FuncExample = x => { return x * x; };
+        }
+
+        public Func<string, string, int> CalculatorFirstNameAndLastName(string firstName, string lastname)
+        {
+            //دوتا پارامتر اول ورودی ها یا پارامترهای این فانک هستند که رشته هستند
+            // خروجی هم یک عدد است 
+            return (firstName, lastname) => firstName.Length + lastname.Length;
+        }
+
+        public void FuncWithoutParameters()
+        {
+            //وقتی ما بخواهیم یک فانک تعریف کنیم که پارامتر نداشته باشد بدین صورت تعریف می کنیم
+
+            //بدین صورت
+            Func<string, string, string> test = (_, _) => "Hello" + "Word";
+
+            //بدین شکل هم می شود تعریف کرد
+            Func<string> test2 = () => "Hello";
+
+        }
+    }
+    #endregion
+
+
+    #region Explicitly Specifying Lambda Parameter And Return Type
+
+    class ExplicitlySpecifyingLambdaParameter
+    {
+        void Foo<T>(T x) { }
+
+        void Bar<T>(Action<T> action) { }
+
+        //به دو حالت می توان به صورت صریح تبدیل کرد
+
+        void MethodTest()
+        {
+            //به صورت صریح تبدیل کنی
+            Bar((int x) => Foo(x));
+
+            Bar<int>(Foo);
+
+            var sqr = (int x) => x * x;
+
+            int i = sqr(10);
+        }
+
+    }
+    #endregion
+
+
+
+
 
     #endregion
 
