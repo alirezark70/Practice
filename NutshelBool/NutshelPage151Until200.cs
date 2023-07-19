@@ -476,8 +476,52 @@ namespace NutshelBooK
     #endregion
 
 
+    #region Capturing Outer Varables
+    class CapuringOuterVariables
+    {
+        
+        void TestMethod01()
+        {
+            //می توان مقادیر خارجی هم به دلیگیت ها پاس داد 
+            int factor = 2;
+
+            Func<int, int> multiplier = x => x * factor;
+
+            //به این که یک متغییر خارحی را به دلیگیت پاس بدهیم 
+            //Cluser
+            //می گویند
+
+            factor = 10;
+            //مقدار بالا زمانی ست می شود که متد فراخوانی می شود
+
+        }
+        
+    }
+
+    #endregion
 
 
+    #region Static Data
+    class StaticData
+    {
+        //در برخی موارد  اختصاص دادن متغییرهای داخلی باعث سربار می شود
+        //با دادن کلمه کلیدی 
+        //static
+        //جلوی تخصیص متغییرهای یداخلی گرفته می شود
+
+        void TestMethod()
+        {
+            //با کلمه کلیدی استاتیک جلوی تخصیص متغییر های محلی گرفته می شود
+
+            Func<int, int> srq = static x => x * 2;
+
+            int footer = 2;
+
+           // Func<int, int> srq2 = static x => x * footer;Compiler Error
+
+        }
+    }
+    #endregion
 
     #endregion
 
