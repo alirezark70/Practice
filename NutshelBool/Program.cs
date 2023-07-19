@@ -76,8 +76,17 @@ Page30Until60Nutshel page30Until60 = new();
 //ExampleGenericConstraint constraint = new ExampleGenericConstraint();
 //constraint.TestMethod();
 
-UnmanagedTypes.DisplaySize<EnumExample>();
-UnmanagedTypes.DisplaySize<ushort>();
+//UnmanagedTypes.DisplaySize<EnumExample>();
+//UnmanagedTypes.DisplaySize<ushort>();
+
+//MultiCastDelegateExample multiCast=new MultiCastDelegateExample();
+//multiCast.Execute();
+PriceChangeExample.Stock changeExample = new PriceChangeExample.Stock("Btc");
+
+
+changeExample.Price = 100;
+
+changeExample.Price = 200;
 
 #endregion
 
