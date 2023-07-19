@@ -8,6 +8,7 @@ using static System.Console;
 using static System.IO.File;
 using static NutshelBooK.EventExample;
 using System.Runtime.CompilerServices;
+using System.Net;
 
 namespace NutshelBooK
 {
@@ -520,6 +521,27 @@ namespace NutshelBooK
            // Func<int, int> srq2 = static x => x * footer;Compiler Error
 
         }
+    }
+    #endregion
+
+
+    #region Exception Filters
+    class ExceptionFilters
+    {
+        //می توان بروی کش فیلتر گذاشت
+        void MethodTest()
+        {
+            try
+            {
+
+            }
+            catch (WebException wx)when (wx.Status==WebExceptionStatus.Timeout)
+            {
+
+                throw;
+            }
+        }
+	
     }
     #endregion
 
