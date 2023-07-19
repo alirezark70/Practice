@@ -17,4 +17,46 @@ namespace NutshelBooK
 
     }
 
+    public interface IClassA
+    {
+        void WriteLine();
+    }
+
+    public class ClassA : IClassA
+    {
+        public string Name { get; set; }
+
+        public virtual void WriteLine()
+        {
+            Console.WriteLine(Name);
+        }
+    }
+    public class ClassB : ClassA, IClassA
+    {
+        public override void WriteLine()
+        {
+            Console.WriteLine(Name);
+        }
+    }
+
+    public class MainExample
+    {
+        public void WriteLine()
+        {
+            ClassA a = new ClassA();
+
+            a.Name = "Hossein";
+
+            SetName(a);
+            a.WriteLine();
+
+        }
+
+        private void SetName(ClassA a)
+        {
+            a = new ClassA();
+            a.Name = "Ali";
+        }
+    }
 }
+

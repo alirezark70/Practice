@@ -85,4 +85,7 @@ UnmanagedTypes.DisplaySize<ushort>();
 //TestHidingEample testHidingEample = new TestHidingEample();
 
 //testHidingEample.Test();
+
+MainExample test =new MainExample();
+test.WriteLine();
 Console.ReadLine();
