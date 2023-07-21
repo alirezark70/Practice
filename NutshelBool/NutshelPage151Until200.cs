@@ -480,7 +480,7 @@ namespace NutshelBooK
     #region Capturing Outer Varables
     class CapuringOuterVariables
     {
-        
+
         void TestMethod01()
         {
             //می توان مقادیر خارجی هم به دلیگیت ها پاس داد 
@@ -496,7 +496,7 @@ namespace NutshelBooK
             //مقدار بالا زمانی ست می شود که متد فراخوانی می شود
 
         }
-        
+
     }
 
     #endregion
@@ -518,7 +518,7 @@ namespace NutshelBooK
 
             int footer = 2;
 
-           // Func<int, int> srq2 = static x => x * footer;Compiler Error
+            // Func<int, int> srq2 = static x => x * footer;Compiler Error
 
         }
     }
@@ -535,15 +535,131 @@ namespace NutshelBooK
             {
 
             }
-            catch (WebException wx)when (wx.Status==WebExceptionStatus.Timeout)
+            catch (WebException wx) when (wx.Status == WebExceptionStatus.Timeout)
             {
 
                 throw;
             }
         }
-	
+
     }
     #endregion
+
+
+
+
+    #region The Using Statment
+    class UsingStatment
+    {
+        void Test()
+        {
+            try
+            {
+                using (var reader = File.OpenText("text.txt"))
+                {
+                    //بعضی از کلاس ها مانند فایل ها نوشتن بر روی فایل یا کارهای گرافیکی یا کار بر روی 
+                    //کانکشن دیتابیس فضای مدیریت نشده منابع دارند برای هندل کردنش باید با استفاده از اینترفیس ایدیسپوسیبل 
+                    //فضای ایجاد شده رو بعد از کار کردن خالی کنیم
+                    ((IDisposable)reader).Dispose();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+            }
+        }
+    }
+    #endregion
+
+
+    #region Throw Exception
+    public class ThrowException
+    {
+        //برای مدیریت خطای ها می توان از کلاس خود مدل خطا هم استفاده کرد
+
+        void Test(string name)
+        {
+            //کد زیر یک کلاس سی شارپی است که عمل چک کردن را هم خودش انجام میدهد و اگر مقدار نال باشد خطا را پرتاب می کند
+            //با کد زیر نیاز به نوشتن کد اضافه 
+            //if
+            //نداریم
+
+            ArgumentNullException.ThrowIfNull(name);
+
+
+
+        }
+
+       public string ProperCase(string value)
+        {
+            return string.IsNullOrEmpty(value) ? throw new ArgumentException(value) : value.ToUpper();
+        }
+    }
+    #endregion
+
+
+
+    #region Rethrowing An exception
+    class RethrowingAnException
+    {
+        void Test()
+        {
+
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                //بهترین حالت همین کد زیر است
+                //اگر دوباره یک استثنا ایجاد کنیم خط اصلی خطا گم می شود
+                throw;
+            }
+        }
+    }
+    #endregion
+
+
+
+    #region Try XXX Method Pattern
+
+    class TryXXXMethodPattern
+    {
+         int DoSomething(string input)
+        {
+            throw new Exception(); // This method might throw an exception
+        }
+
+        //در این روش که یک پترن می باشد به جای پرتاب خطا مقدار
+        //true or false
+        //برمیگرداند که مثالش در پایین آورده شده است
+
+         bool TrySomething(string input, out int result)
+        {
+            result = 0;
+            try
+            {
+                result = DoSomething(input);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+    }
+
+    #endregion
+
+
+
+
+
 
     #endregion
 
