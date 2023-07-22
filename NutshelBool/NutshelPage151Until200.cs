@@ -658,7 +658,51 @@ namespace NutshelBooK
 
 
 
+    #region Enumeration And Iterators
+    class EnumerationAndEieratiors
+    {
+        //Enumerator
+        //یک شمارگر است
 
+        //iterator
+        //به معنای تکرار کننده است
+
+
+        //داخل یک شمارش گر یک متد به نام 
+        //MoveNext
+        //میباشد
+        //و یک پروپرتی به نام
+        //Current
+        //دارد
+
+        //شمارشگر سطح بالا
+        void Enumeration()
+        {
+            //فوریچ یک شمارشگر سطح بالا می باشد
+
+            //یک فورایچ یک استفاده کننده شمارش گر است
+            //itrator
+            //ایتیریتور تولید کننده شمارشگر می باشد
+            foreach(char c in "beer")
+            {
+                Console.WriteLine(c);
+            }
+
+            
+            //برای اینکه بفهمیم چحوری کار می کند این را سطح پایین می نویسیم
+
+            using (var enumerator="beer".GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    var element = enumerator.Current;
+                    Console.WriteLine(element);
+                      
+                }
+            }
+        }
+    }
+    #endregion
 
 
     #endregion
