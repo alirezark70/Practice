@@ -546,7 +546,7 @@ namespace NutshelBooK
     #endregion
 
 
-
+    //6037-9974-4493-3585
 
     #region The Using Statment
     class UsingStatment
@@ -705,6 +705,53 @@ namespace NutshelBooK
     #endregion
 
 
+
+    #region Iterators And Try/Catch / Finally Blocks
+    class IteratorsAndTryCatchFinallyBlocks
+    {
+        //برای اینکه 
+        //yield 
+        //را روی یک لیست در بلاک 
+        //try
+        //بگذاریم مجاز به این کار نیستم چون لیست با متد 
+        //moveNext And Current
+        //کار می کند
+
+        IEnumerable<string> TestMethod()
+        {
+            //در حال معمول این کار می کند
+            yield return "one";
+        }
+
+        IEnumerable<string> TestMethod2()
+        {
+            //برای اینکه این تیکه کد خطا نده باید بلاک 
+            //catch
+            //را حذف کنیم تا خطا برطرف بشه
+
+            try
+            {
+                yield return "One";
+            }
+            
+            finally
+            {
+
+            }
+        }
+    }
+    #endregion
+
+
+
+    #region Implicit And Expicit Nullable Conversions
+    class ImplicitAndExpiciltNullableConversions
+    {
+        //The conversion from T to T? is implicit, while the conversion from T? to T is explicit
+
+
+    }
+    #endregion
     #endregion
 
 
