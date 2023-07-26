@@ -25,6 +25,7 @@ namespace NutshelBooK
     {
         void Example()
         {
+            //this is Anonymous Tuple
             var bob = ("Bob", 32,14);
 
            string name= bob.Item1;
