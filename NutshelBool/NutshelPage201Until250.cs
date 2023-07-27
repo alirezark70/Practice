@@ -34,5 +34,17 @@ namespace NutshelBooK
     #endregion
 
 
+    #region Record
+    class RecorExample
+    {
+        //یک نوع ساختار برای کار کردن با داده فقط خواندنی است
+        //کامپایل تایم می باشند
+
+        record Record
+        {
+
+        }
+    }
+    #endregion
     #endregion
 }
