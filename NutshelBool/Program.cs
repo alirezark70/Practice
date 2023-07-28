@@ -93,7 +93,10 @@ changeExample.Price = 200;
 
 //TestHidingEample testHidingEample = new TestHidingEample();
 
-//testHidingEample.Test();
- var throwException = new ThrowException().ProperCase("");
+////testHidingEample.Test();
+// var throwException = new ThrowException().ProperCase("");
+
+VarPattern varPattern = new VarPattern();
+
 
 Console.ReadLine();
