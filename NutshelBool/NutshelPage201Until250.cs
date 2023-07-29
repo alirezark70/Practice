@@ -119,7 +119,7 @@ namespace NutshelBooK
             }
 
             //در اینجا مقدار رشته را در یک متغییر محلی به نام اس ریختیم
-            if(obj is string s)
+            if (obj is string s)
             {
 
             }
@@ -144,13 +144,71 @@ namespace NutshelBooK
         {
             bool IsJanetOrJohn(string name)
             {
-              return  name.ToUpper() is var upper && (upper == "JANET" || upper == "JOHN");
+                return name.ToUpper() is var upper && (upper == "JANET" || upper == "JOHN");
             }
 
             bool IsHanetOrJohnTwo(string name) => name.ToUpper() is "JANET" or "JOHN";
         }
 
-      
+
+    }
+    #endregion
+
+    
+    #region Tuple And Positional Patterns
+
+    public class TupleAndPositionalPatterns
+    {
+        //Tuple Pattern
+        int AverageCelsiusTemperature(Season season, bool daytime)
+            => (season, daytime) switch
+            {
+                (Season.Spring, true) => 20,
+                (Season.Spring, false) => 16,
+                (Season.Summer, true) => 27,
+                (Season.Summer, false) => 22,
+                (Season.Fall, true) => 18,
+                (Season.Fall, false) => 12,
+                (Season.Winter, true) => 10,
+                _ => throw new Exception("Unexpected Combination")
+            };
+
+        public int GetAverageCelsiusTemperature(Season season, bool daytime)
+        {
+            return AverageCelsiusTemperature(season, daytime);
+        }
+
+       public enum Season
+        {
+            Spring,
+            Summer,
+            Fall,
+            Winter
+        }
+    }
+
+
+    #endregion
+
+
+    #region Property Patterns
+    class PropertyPatterns
+    {
+        bool ShouldAllow(Url url) => url switch
+        {
+            { Scheme:"http",Port:80}=>true,
+            { Scheme: "https", Port: 443 } => true,
+            { Scheme: "ftp", Port: 21 } => true,
+            _=>false
+        };
+
+
+        class Url
+        {
+            public string Scheme { get; set; }
+            public int Port { get; set; }
+
+        }
     }
     #endregion
 
