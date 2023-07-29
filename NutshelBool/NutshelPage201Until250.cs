@@ -212,5 +212,41 @@ namespace NutshelBooK
     }
     #endregion
 
+
+
+
+    #region Dynamic Binding
+
+    class DynamicBinding
+    {
+        //داینامیک فرایند را از کامپایلر تایم به ران تایم تغییر می دهد
+        // این زمانی مفید است که ما از نوع و جنس خبر داریم ولی به دلایلی کامپایلر توانایی شناسایی ندارد 
+        //برای همین از داینامیک استفاده می کنیم در این زمان
+
+        void Example()
+        {
+            //dynamic d = GetSomeObject();
+        }
+    }
+    #endregion
+
+
+    #region Static Binding Versus Dynamic Binding
+    class StaticBindingVersusDynamicBinding
+    {
+        //اتصال ثابت و اتصال داینامیک
+        //در فرایندی که در زمان کامپایلر تایم اتصال مشخص شود اتصال ثابت می گوییم
+        //و در فرایندی که اتصال تا زمان ران تایم مشخص نباشد و توسط کامپایلر مشخص نگردد اتصال داینامیک می گوییم
+
+        //این یک اتصال ثابت است
+        Person Person = new Person("","");
+
+
+        //این یک اتصال داینامیک می باشد
+        //dynamic d=.....
+    }
+    #endregion
+
+
     #endregion
 }
