@@ -96,7 +96,15 @@ changeExample.Price = 200;
 ////testHidingEample.Test();
 // var throwException = new ThrowException().ProperCase("");
 
-VarPattern varPattern = new VarPattern();
+//VarPattern varPattern = new VarPattern();
 
+dynamic person = new DynamicDictionary();
+
+person.FirstName = "Alireza";
+person.LastName = "Rezaee";
+person.Age = 28;
+
+
+Console.WriteLine(person.FirstName);
 
 Console.ReadLine();

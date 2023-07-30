@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -241,12 +242,50 @@ namespace NutshelBooK
         //این یک اتصال ثابت است
         Person Person = new Person("","");
 
+        
 
         //این یک اتصال داینامیک می باشد
         //dynamic d=.....
     }
     #endregion
 
+
+
+    #region Custom Binding
+    class CustomBinding: DynamicObject
+    {
+        public override bool TryInvokeMember(InvokeMemberBinder binder, object?[]? args, out object? result)
+        {
+            return base.TryInvokeMember(binder, args, out result);
+        }
+    }
+
+    public class DynamicDictionary:DynamicObject
+    {
+        //با این الگو می شود یک شی داینامیک ساخت که مدل ها و پروپرتی هایش یکسان نباشد
+        Dictionary<string,object> dictionary = new Dictionary<string,object>();
+
+        public int Count
+        {
+            get { return dictionary.Count;}
+        }
+
+        public override bool TryGetMember(GetMemberBinder binder, out object? result)
+        {
+            string name=binder.Name.ToLower();
+
+            return dictionary.TryGetValue(name, out result);
+        }
+
+        public override bool TrySetMember(SetMemberBinder binder, object? value)
+        {
+            dictionary[binder.Name.ToLower()] = value;
+
+            return true;
+        }
+    }
+
+    #endregion
 
     #endregion
 }
