@@ -287,5 +287,41 @@ namespace NutshelBooK
 
     #endregion
 
+
+    #region Runtime Representation of Dynamic
+
+    class RuntimeRepresentationOfDynamic
+    {
+        //یک داینامیک می تواند به یک آبجکت تبدیل شود
+
+        void Example()
+        {
+            object o = new System.Text.StringBuilder();
+            dynamic d = o;
+
+            d.Append("Hello");
+        }
+    }
+
+    #endregion
+
+
+    #region VarVersusDynamic
+    class VarVersusDynamic
+    {
+        //کلمه کلیدی 
+        //var 
+        //با داینامیک شباهت های سطحی دارند ولی تفاوت های عمیقی و مفهومی باهم دارند
+
+        //var
+        //می گویید بگذارید تایپ را کامپایلر تشخیص دهد
+
+
+        //dynamic
+        //می گویید بگذارید مقدار را زمان ران تایم مشخص شود
+
+    }
+    #endregion
+
     #endregion
 }
