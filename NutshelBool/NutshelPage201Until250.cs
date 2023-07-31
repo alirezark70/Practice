@@ -323,5 +323,26 @@ namespace NutshelBooK
     }
     #endregion
 
+
+    #region Dynamic Calls Without Dynanmic Receivers
+    class DynamicCallsWithoutDynamicReceivers
+    {
+        //تا جایی که ممکن است مقادیر در زمان کامپایل شناسایی می شود
+
+    }
+    #endregion
+
+
+    #region Uncallable Functions
+    class UncallableFunctions
+    {
+        //3 نوع فانشن وجود دارد که نمی شود داینامیک تعریف شوند
+        //اکسیشن متد
+        //اعظای اینترفیس
+        //ایتم های هیدن در کلاس های فرزند
+        //چون برای اجرای فرایند آنها نیاز به داستن مقادیر اولیه دارند
+    }
+    #endregion
+
     #endregion
 }
