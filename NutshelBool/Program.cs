@@ -105,6 +105,14 @@ person.LastName = "Rezaee";
 person.Age = 28;
 
 
+var b = new CustomImplicitAndExplicitConversionOperators.Digit(3);
+
+byte number = b;
+
+
+CustomImplicitAndExplicitConversionOperators.Digit digit =
+    (CustomImplicitAndExplicitConversionOperators.Digit)number;
+
 Console.WriteLine(person.FirstName);
 
 Console.ReadLine();

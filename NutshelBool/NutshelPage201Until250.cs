@@ -344,5 +344,36 @@ namespace NutshelBooK
     }
     #endregion
 
+    #region Custom Implicit And Explicit Conversion Operators
+    public class CustomImplicitAndExplicitConversionOperators
+    {
+        //انواع تبدیل ضمنی و صریح به صورت سفارشی و شخصی سازی شده
+        public readonly struct Digit
+        {
+            private readonly byte digit;
+
+            public Digit(byte digit)
+            {
+                if(digit>9)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(digit),"Digit cannot Be Greater than nine");
+                }
+                this.digit = digit;
+            }
+
+            public static implicit operator byte(Digit d) => d.digit;
+            public static explicit operator Digit(byte b)=>new Digit(b);
+
+            public override string ToString()
+            {
+                return $"{digit}";
+            }
+        }
+
+
+    }
+    #endregion
+
+
     #endregion
 }
