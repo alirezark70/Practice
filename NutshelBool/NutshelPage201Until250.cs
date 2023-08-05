@@ -375,5 +375,41 @@ namespace NutshelBooK
     #endregion
 
 
+
+    #region Fixed - Size - Buffers
+    class FixedSizeBuffers
+    {
+        //کلمه کلیدی Unsafe
+        //یک کلمه کلیدی است که قطعه کدی را در یک بلوک جداگانه در نظر میگیره و مقدار مشخص شده استک رم را بهم 
+        //اختصاص میدهد
+
+
+        unsafe struct UnsafeUnicodeString
+        {
+            public short length;
+            //کلمه کلیدی fixed
+            //این بدین معنا است که این عدد در زمان اجرا تغییر نمی کند و همیشه این مقدار می باشد
+            public fixed byte Buffer[30];
+        }
+
+        unsafe class UnsafeColass
+        {
+            UnsafeUnicodeString uus;
+            public UnsafeColass(string s)
+            {
+                uus.length = (short)s.Length;
+                fixed (byte* p=uus.Buffer)
+                {
+                    for (int i = 0; i < s.Length; i++)
+                    {
+                        p[i] = (byte)s[i];
+                    }
+                }
+            }
+        }
+
+    }
+    #endregion
+
     #endregion
 }
