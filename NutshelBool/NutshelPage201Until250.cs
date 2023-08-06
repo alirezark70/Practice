@@ -411,5 +411,21 @@ namespace NutshelBooK
     }
     #endregion
 
+
+
+    #region Nuint Nint
+    //این ویژگی در سی شارپ 9 اضافه شد و برای زمانی که از کتاب خوانه های خودش استفاده می کنیم
+    //در کل در زمانی استفاده می شود که در محیط 64 بیتی میخواهیم مقدار عددی 64 بیتی و در 32 به همان 
+    //مقدار باشد
+    #endregion
+
+
+
+    #region Function Pointers
+    class FunctionPointers
+    {
+
+    }
+    #endregion
     #endregion
 }
