@@ -10,4 +10,11 @@ namespace NutshelBooK
     {
 
     }
+
+
+    #region EndCoding
+    //بهترین فرمت برای نوشتن و فایل های نوشتاری
+    //utf-8
+    //می باشد
+    #endregion
 }
