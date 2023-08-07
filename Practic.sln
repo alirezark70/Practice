@@ -136,7 +136,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfAdvancedConfigurationSamp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Session24", "Session24", "{CA29034A-26D3-4590-88C9-7110B05FC4D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbContextExample", "DbContextExample\DbContextExample.csproj", "{414E82B5-A4BC-41DD-85CA-3354F74810EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbContextExample", "DbContextExample\DbContextExample.csproj", "{414E82B5-A4BC-41DD-85CA-3354F74810EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatorDesignPattern", "MediatorDesignPattern\MediatorDesignPattern.csproj", "{94C596E7-93AF-49FE-8884-BF600F7A7E8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -300,6 +302,10 @@ Global
 		{414E82B5-A4BC-41DD-85CA-3354F74810EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{414E82B5-A4BC-41DD-85CA-3354F74810EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{414E82B5-A4BC-41DD-85CA-3354F74810EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94C596E7-93AF-49FE-8884-BF600F7A7E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C596E7-93AF-49FE-8884-BF600F7A7E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C596E7-93AF-49FE-8884-BF600F7A7E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C596E7-93AF-49FE-8884-BF600F7A7E8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -365,6 +371,7 @@ Global
 		{481E12F7-139B-4E1E-95A2-34A3D1037093} = {C2FDDC63-C13E-4390-ABCC-BFA289F8E712}
 		{CA29034A-26D3-4590-88C9-7110B05FC4D0} = {09AD677E-AFF5-4A6E-BF58-4B0ACCFB1FAB}
 		{414E82B5-A4BC-41DD-85CA-3354F74810EE} = {CA29034A-26D3-4590-88C9-7110B05FC4D0}
+		{94C596E7-93AF-49FE-8884-BF600F7A7E8D} = {9BD2D54E-948D-4A0D-9415-BA823444E586}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {709702AD-7FDD-4B82-8372-3D5B7CEF8343}
