@@ -98,21 +98,27 @@ changeExample.Price = 200;
 
 //VarPattern varPattern = new VarPattern();
 
-dynamic person = new DynamicDictionary();
+//dynamic person = new DynamicDictionary();
 
-person.FirstName = "Alireza";
-person.LastName = "Rezaee";
-person.Age = 28;
-
-
-var b = new CustomImplicitAndExplicitConversionOperators.Digit(3);
-
-byte number = b;
+//person.FirstName = "Alireza";
+//person.LastName = "Rezaee";
+//person.Age = 28;
 
 
-CustomImplicitAndExplicitConversionOperators.Digit digit =
-    (CustomImplicitAndExplicitConversionOperators.Digit)number;
+//var b = new CustomImplicitAndExplicitConversionOperators.Digit(3);
 
-Console.WriteLine(person.FirstName);
+//byte number = b;
 
+
+//CustomImplicitAndExplicitConversionOperators.Digit digit =
+//    (CustomImplicitAndExplicitConversionOperators.Digit)number;
+
+//Console.WriteLine(person.FirstName);
+
+FormatPRovaidersSample format=new FormatPRovaidersSample();
+
+var watch= System.Diagnostics.Stopwatch.StartNew();
+string e =format.GetPersianStrFromDateTime(DateTime.Now);
+watch.Stop();
+Console.WriteLine(watch.ElapsedMilliseconds);
 Console.ReadLine();
