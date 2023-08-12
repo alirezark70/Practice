@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -9,6 +11,26 @@ namespace NutshelBooK
 {
     public class NutshelPage271Until350
     {
+
+    }
+
+
+    public class CalculateHelper
+    {
+        private Stopwatch? _watch;
+        protected void StartWatch()
+        {
+            _watch = System.Diagnostics.Stopwatch.StartNew();
+        }
+
+        protected void StopAndWriteLineWatch()
+        {
+            _watch?.Stop();
+
+            Console.WriteLine(_watch?.ElapsedMilliseconds);
+        }
+
+
 
     }
 
@@ -135,7 +157,67 @@ namespace NutshelBooK
         }
     }
 
-    
+
     #endregion
 
+
+    #region Rounding real to integral conversions
+    public class RoundingRealToIntegralConversionsClass: CalculateHelper
+    {
+       public void Test()
+        {
+            //ما 2 نوع تبدیل داریم 
+            //explicit Cast
+            //Convert
+
+            //در این روش مقدار گرد نمی شود و فقط اعشارش حذف می شود
+            double lll = 43435.535;
+            int result = (int)lll;
+
+            //در این روش مقدار از تابع گرد شدن استفاده می کند و مقادیری که خروجی شده نزدیک
+            //ترین عدد به مقدار واقعی قبل تبدیل می باشد
+            int result2 = Convert.ToInt32(lll);
+        }
+    }
+
+    #endregion
+
+
+    #region Dynamic Conversions
+    public class DynamicConversionsClass
+    {
+        public void ChangeType()
+        {
+            //زمان های است که ما نمی دانیم تایپ ما تا لحظه اجرا چیست
+            //با استفاده از روش زیر
+            //در زمان اجرا تایپ را می توانیم کنترل کنیم تغییر دهیم یا نوع تایپ را مشخص نماییم
+            Type targetType=typeof(int);
+
+            object source = "43";
+
+            object result=Convert.ChangeType(source,targetType);
+
+            
+        }
+    }
+    #endregion
+
+
+    #region Globalization 
+    public class GlobalizationClass
+    {
+        //می تواند رشته یا ساعت در فرهنگ های محتلف تغییر کند و عملکرد درست سیستم
+        //را با مشکل مواجه سازد
+
+        public void Test()
+        {
+            //فرهنگ سیستم کاربر را می توان استخراج کرد
+            var result=Thread.CurrentThread.CurrentCulture;
+
+            Thread.CurrentThread.CurrentCulture=CultureInfo.GetCultureInfo("IR-fa");
+
+            var time = DateTime.Now;
+        }
+    }
+    #endregion
 }

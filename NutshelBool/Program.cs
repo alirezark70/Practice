@@ -115,10 +115,14 @@ changeExample.Price = 200;
 
 //Console.WriteLine(person.FirstName);
 
-FormatPRovaidersSample format=new FormatPRovaidersSample();
+//FormatPRovaidersSample format=new FormatPRovaidersSample();
 
-var watch= System.Diagnostics.Stopwatch.StartNew();
-string e =format.GetPersianStrFromDateTime(DateTime.Now);
-watch.Stop();
-Console.WriteLine(watch.ElapsedMilliseconds);
+//var watch= System.Diagnostics.Stopwatch.StartNew();
+//string e =format.GetPersianStrFromDateTime(DateTime.Now);
+//watch.Stop();
+//Console.WriteLine(watch.ElapsedMilliseconds);
+
+GlobalizationClass testca = new();
+testca.Test();
+
 Console.ReadLine();
