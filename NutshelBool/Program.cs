@@ -5,6 +5,7 @@ using static NutshelBool.CSharpExample;
 using person = NutshelBooK.Person;
 using childClasses = NutshelBooK.Child;
 using NutshelBool;
+using static NutshelBooK.EnumConversionClass;
 
 
 #region Page30 Until 63
@@ -121,8 +122,6 @@ changeExample.Price = 200;
 //string e =format.GetPersianStrFromDateTime(DateTime.Now);
 //watch.Stop();
 //Console.WriteLine(watch.ElapsedMilliseconds);
-
-GlobalizationClass testca = new();
-testca.Test();
-
+EqualVsOperationClass equalVs=new EqualVsOperationClass();
+var e=equalVs.EquealProtocol();
 Console.ReadLine();
