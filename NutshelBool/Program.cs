@@ -122,6 +122,12 @@ changeExample.Price = 200;
 //string e =format.GetPersianStrFromDateTime(DateTime.Now);
 //watch.Stop();
 //Console.WriteLine(watch.ElapsedMilliseconds);
-EqualVsOperationClass equalVs=new EqualVsOperationClass();
-var e=equalVs.EquealProtocol();
+
+//IEquatableClass.Area area1 = new();
+//area1.Measure1 = 10;
+//area1.Measure2 = 10;
+//IEquatableClass.Area area2 = new();
+//area2.Measure1 = 18;
+//area2.Measure2 = 3;
+//bool result=area1.Equals(area2);
 Console.ReadLine();

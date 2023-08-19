@@ -321,4 +321,105 @@ namespace NutshelBooK
         }
     }
     #endregion
+
+
+    #region IEquatable<T>
+
+    public class IEquatableClass
+    {
+        //در برخی موارد ما میخواهیم برابری را بیشتر از مواردی که دات نت برای ما ایجاد کرده محاسبه کنیم
+        //برای مثال ما برای اندازه گرفتن یک سطح به عرض و طول نیاز دارم
+        //و چون اجسام ما مربع هستن اگر عرض و طول برابر باشند جسم برابر است
+        //برای اینکار ما از این کلاس ارث بری می کنیم
+
+        public class Area : IEquatable<Area>
+        {
+            public int Measure1 { get; set; }
+            public int Measure2 { get; set; }
+
+            private int Average
+            {
+                get => (Measure1 + Measure2) / 2;
+                     
+            }
+
+            public bool Equals(Area? other)
+            {
+                if (Measure1 == 0 || Measure2 == 0)return false;
+
+                if(other == null) return false;
+
+                if(other.Measure1==0 || other?.Measure1 == null) return false;
+
+                if (other.Measure2 == 0 || other?.Measure2 == null) return false;
+
+                return (Measure1+ Measure2) == (other?.Measure1 + other?.Measure2);
+            }
+        }
+    }
+    #endregion
+
+
+    #region IComparable
+    public class IComparableSample
+    {
+        //مرتب سازی
+        //در حالت عادی در مقادیر
+        //value type
+        //وقتی مقداری میدهیم می توانیم با متد
+        //sort
+        //اقدام به مرتب سازی لیست کنیم
+        List<int> A=new List<int> { 1,2,3,4,};
+
+       public void SortValueType()
+        {
+            A.Sort();
+        }
+
+        //ولی وقتی از یک آبجکت یا شی استفاده کنیم 
+        //چون مکانیزم مرتب سازی درونش پیاده سازه نشده با صدا زدن متد 
+        //sort
+        //با خطا مواجه میشویم
+        //برای حل این مشکل بدین صورت عمل می کنیم
+
+        
+    }
+
+    public class PersonSortable : IComparable<PersonSortable>
+    {
+
+        public int Id { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public int CompareTo(PersonSortable? other)
+        {
+            if (this.Id > other?.Id) return 1;
+
+            if (this.Id == other?.Id) return 0;
+
+            else  return -1;
+        }
+    }
+
+    #endregion
+
+
+    #region IComparable versus Equals
+    public class IComparableVersusEqualsClass
+    {
+        //این دو در ظاهر مثل هم کار می کنند ولی همیشه اینجور نیست
+        //برای کاپایلبر همیشه آبجکت های یکسان باهم برابرند
+        // ولی برای اکوال بعضی از شی ها برابر ترند
+        //برای مثال کارکتر
+        //u
+        //در زبان ترکیه ای
+        //برای اینترفیس IComparable
+        //این کارکتر برابر همیشه
+        //ولی برای اکوال این شکلی نیست
+
+    }
+    #endregion
 }
