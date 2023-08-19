@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace MediatorDesignPattern
 {
-    internal class MediatorDesignPattern
+    public class MediatorDesignPattern
     {
         //https://faradars.org/courses/mediator-pattern-in-software-development-using-c-sharp-fvsft95081s18?registered=1
+
+
+        public void test()
+        {
+            Console.WriteLine();
+        }
     }
 
     //کلاس های تشکیل دهنده مدیاتور
@@ -34,11 +41,11 @@ namespace MediatorDesignPattern
     /// </summary>
     public abstract class Mediator
     {
-        public abstract void Send(string message,Colleague colleague);
+        public abstract void Send(string message, Colleague colleague);
     }
 
 
-    class ConcreteMediator:Mediator
+   public class ConcreteMediator : Mediator
     {
         private ConcreteColleague1 _colleague1;
         private ConcreteColleague2 _colleague2;
@@ -53,17 +60,49 @@ namespace MediatorDesignPattern
     }
 
 
-   public abstract class Colleague
+    public abstract class Colleague
     {
+        protected Mediator _mediator;
+
+        public Colleague(Mediator mediator)
+        {
+            _mediator = mediator;
+        }
+
 
     }
 
-    class ConcreteColleague1:Colleague
+    public class ConcreteColleague1 : Colleague
     {
+        public ConcreteColleague1(Mediator mediator) : base(mediator)
+        {
 
+        }
+
+        public void Send(string message)
+        {
+            _mediator.Send(message, this);
+        }
+
+        public void Notify(string message)
+        {
+            WriteLine("Collague 1");
+        }
     }
-    class ConcreteColleague2: Colleague
+    public class ConcreteColleague2 : Colleague
     {
+        public ConcreteColleague2(Mediator mediator) : base(mediator)
+        {
 
+        }
+        public void Send(string message)
+        {
+            _mediator.Send(message, this);
+        }
+
+        public void Notify(string message)
+        {
+            WriteLine("Collague 1");
+        }
     }
 }
