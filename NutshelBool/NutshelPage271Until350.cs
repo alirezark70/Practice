@@ -422,4 +422,13 @@ namespace NutshelBooK
 
     }
     #endregion
+
+
+    #region IEnumerable And IEnumerator
+    public class IEnumerableAndIEnumeratorClass
+    {
+
+    }
+
+    #endregion
 }
