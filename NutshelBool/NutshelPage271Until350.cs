@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -6,10 +7,10 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Security;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace NutshelBooK
 {
     public class NutshelPage271Until350
@@ -439,8 +440,110 @@ namespace NutshelBooK
 
         }
 
-    }
-   
 
+        class StringImplementIEnumerator
+        {
+            //رشته یک مقدار قابل شمارش است
+            //چونکه 
+            //IEnumerable
+            //را پیاده سازی کرده است
+
+            public void Example()
+            {
+                string result = "Hello Word";
+
+                IEnumerator rator=result.GetEnumerator();
+
+                while (rator.MoveNext())
+                {
+                    char c = (char)rator.Current;
+
+                    Console.Write(c+".");
+                }
+
+                //بر روی یکی رشته پیمایش کردیم
+                //به ندرت از روش بالا استفاده می کنیم 
+                //چون که پیمایشگر foreach
+                //این قابلیت را پیاده سازی کرده است
+
+                foreach(char c in  result) Console.Write(c+".");
+
+            }
+        }
+
+
+
+        class ArrayEnumerableClass
+        {
+            //آرایه ها به صورت دیفالت 
+            //Ienumerable<T>
+            //را پیاده سازی می کنند
+
+            void Test(IEnumerable<int> x)
+            {
+
+            }
+        }
+    }
+
+
+    public class MyIntListClass : IEnumerable
+    {
+        List<int> data=new List<int>();
+        public MyIntListClass()
+        {
+            for(int i = 0; i<10000000; i++)
+            {
+                data.Add(i);
+            }
+        }
+
+
+        class Enumerator : IEnumerator
+        {
+            MyIntListClass collection;
+
+            int currentIndex = -1;
+            public Enumerator(MyIntListClass myIntList)
+            {
+                this.collection = myIntList;
+            }
+
+            public object Current
+            {
+                get
+                {
+                    if (currentIndex == -1)
+                        throw new InvalidOperationException("Enumeration Not Srarted!");
+
+                    if(currentIndex==collection.data.Count)
+                        throw new InvalidOperationException("Past End of List!");
+
+                    return collection.data[currentIndex];
+                }
+            }
+
+            public bool MoveNext()
+            {
+                if (currentIndex >= collection.data.Count - 1) return false;
+
+                return ++currentIndex < collection.data.Count;
+            }
+
+            public void Reset()
+            {
+                currentIndex= -1;
+            }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new Enumerator(this);
+        }
+    }
+
+
+
+   
     #endregion
 }

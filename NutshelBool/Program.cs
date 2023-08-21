@@ -6,6 +6,7 @@ using person = NutshelBooK.Person;
 using childClasses = NutshelBooK.Child;
 using NutshelBool;
 using static NutshelBooK.EnumConversionClass;
+using System.Net.Http.Headers;
 
 
 #region Page30 Until 63
@@ -130,4 +131,10 @@ changeExample.Price = 200;
 //area2.Measure1 = 18;
 //area2.Measure2 = 3;
 //bool result=area1.Equals(area2);
+var watch = System.Diagnostics.Stopwatch.StartNew();
+
+watch.Stop();
+
+var result = watch.ElapsedMilliseconds;
+
 Console.ReadLine();
