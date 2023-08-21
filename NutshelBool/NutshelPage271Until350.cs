@@ -251,7 +251,7 @@ namespace NutshelBooK
             byte[] bytes = new byte[length];
 
             random.GetBytes(bytes);
-            return BitConverter.ToInt32(bytes,0).ToString();
+            return BitConverter.ToInt32(bytes, 0).ToString();
 
         }
     }
@@ -264,11 +264,11 @@ namespace NutshelBooK
         public enum Family
         {
             [Description("پدر")]
-            father=1,
+            father = 1,
             [Description("مادر")]
-            mother =2,
+            mother = 2,
             [Description("برادر")]
-            brother =3
+            brother = 3
         }
 
 
@@ -340,20 +340,20 @@ namespace NutshelBooK
             private int Average
             {
                 get => (Measure1 + Measure2) / 2;
-                     
+
             }
 
             public bool Equals(Area? other)
             {
-                if (Measure1 == 0 || Measure2 == 0)return false;
+                if (Measure1 == 0 || Measure2 == 0) return false;
 
-                if(other == null) return false;
+                if (other == null) return false;
 
-                if(other.Measure1==0 || other?.Measure1 == null) return false;
+                if (other.Measure1 == 0 || other?.Measure1 == null) return false;
 
                 if (other.Measure2 == 0 || other?.Measure2 == null) return false;
 
-                return (Measure1+ Measure2) == (other?.Measure1 + other?.Measure2);
+                return (Measure1 + Measure2) == (other?.Measure1 + other?.Measure2);
             }
         }
     }
@@ -369,9 +369,9 @@ namespace NutshelBooK
         //وقتی مقداری میدهیم می توانیم با متد
         //sort
         //اقدام به مرتب سازی لیست کنیم
-        List<int> A=new List<int> { 1,2,3,4,};
+        List<int> A = new List<int> { 1, 2, 3, 4, };
 
-       public void SortValueType()
+        public void SortValueType()
         {
             A.Sort();
         }
@@ -382,7 +382,7 @@ namespace NutshelBooK
         //با خطا مواجه میشویم
         //برای حل این مشکل بدین صورت عمل می کنیم
 
-        
+
     }
 
     public class PersonSortable : IComparable<PersonSortable>
@@ -400,7 +400,7 @@ namespace NutshelBooK
 
             if (this.Id == other?.Id) return 0;
 
-            else  return -1;
+            else return -1;
         }
     }
 
@@ -427,8 +427,20 @@ namespace NutshelBooK
     #region IEnumerable And IEnumerator
     public class IEnumerableAndIEnumeratorClass
     {
+        //IEnumerator
+        //یک کالشن محصول سطح پایین است که فقط شمارش رو به جلو دارد و به شکل زیر است
+        public interface IEnumeratorClass
+        {
+            bool MoveNext();
+
+            object Current { get; }
+
+            void Reset();
+
+        }
 
     }
+   
 
     #endregion
 }
