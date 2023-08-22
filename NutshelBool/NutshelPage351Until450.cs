@@ -60,5 +60,16 @@ namespace NutshelBooK
         }
     }
 
+
+
+
     #endregion
+
+
+    #region Length and Rank
+    //لنت طول یک آرایه را برمیگرداند
+    //رنک rank تعداد بعدهای یک آرایه را برمیگرداند
+    #endregion
+
+
 }
