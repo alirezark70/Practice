@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace NutshelBooK
 {
@@ -72,4 +73,92 @@ namespace NutshelBooK
     #endregion
 
 
+
+
+    #region Searching
+    public class SearchingArrayClass
+    {
+        public void Prossess()
+        {
+            string[] names = { "Alireza", "Soo", "Mohammad", "Ali" };
+
+            string match = Array.Find(names, n => n.Contains('a'));
+        }
+        
+        
+    }
+
+    #endregion
+
+
+    #region Predicate<T>
+    public class PredicateClass
+    {
+        //پردیکیت هم یک نوع دلیکیت و اکشن است
+        //یک ورودی می گیرد و یک خروجی از نوع 
+        //bool
+        //برمیگرداند
+
+        private Predicate<string>? checkContains;
+
+        public static bool Containsaaaa(string input)
+        {
+            return input.Contains("a");
+        }
+
+
+        public void ExampleMethod()
+        {
+            checkContains = Containsaaaa;
+
+            string[] names = { "Alireza", "Soo", "Mohammad", "Ali" };
+
+            string match = Array.Find(names, checkContains);
+        }
+    }
+    #endregion
+
+
+    #region Collection - Copying
+    public class CopyingClass
+    {
+        //ما 4 نوع کپی داریم
+        //clone
+        public void CloneExample()
+        {
+            int[] arr = { 1, 2, };
+
+            //اگر ما از کلون استفاده کنیم یک مقدار جدید ایجاد می شود
+            var copyArr = arr.Clone();
+        }
+
+
+        public void CopyAndCopyToExample()
+        {
+            //copyto and copy
+            //یک کپی از زیر مجموعه پیوسته از آرایه ایجاد می کند
+
+            int[] arr = { 1, 2, };
+
+            arr.CopyTo(arr, 0);
+        }
+    }
+    #endregion
+
+
+    #region Converting And Resizing
+    public class ConvertingAndResizing
+    {
+        //متد کانورت یه شکل زیر می باشد
+        //public delegate TOutput Converter<TInput,TOutput> (TInput input)
+
+        public void ExampleMethod()
+        {
+            float[] arr= { 1.2f, 2.1f,3.9f };
+
+            int[] result = Array.ConvertAll(arr,r=>Convert.ToInt32(r));
+            //result is {1,2,4}
+        }
+    }
+    #endregion
 }
