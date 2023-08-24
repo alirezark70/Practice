@@ -133,6 +133,9 @@ changeExample.Price = 200;
 //bool result=area1.Equals(area2);
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
+
+QueueClass queueClass = new QueueClass();
+queueClass.QueueExample();
 watch.Stop();
 
 var result = watch.ElapsedMilliseconds;

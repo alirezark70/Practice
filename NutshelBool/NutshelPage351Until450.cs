@@ -84,8 +84,8 @@ namespace NutshelBooK
 
             string match = Array.Find(names, n => n.Contains('a'));
         }
-        
-        
+
+
     }
 
     #endregion
@@ -154,11 +154,158 @@ namespace NutshelBooK
 
         public void ExampleMethod()
         {
-            float[] arr= { 1.2f, 2.1f,3.9f };
+            float[] arr = { 1.2f, 2.1f, 3.9f };
 
-            int[] result = Array.ConvertAll(arr,r=>Convert.ToInt32(r));
+            int[] result = Array.ConvertAll(arr, r => Convert.ToInt32(r));
             //result is {1,2,4}
         }
     }
+    #endregion
+
+
+    #region List<T> and ArrayList
+
+    public class ListTAndArrayList
+    {
+        //List<T>
+        //بین برنامه نویسان استفاده بیشتری دارد
+        //لیست یک آرایه به اندازه ورودی ایجاد می کند و با پر شدن با یک لیست جدید جایگزین می شود
+        //در هربار که فضای جدید ایجاد می شود المان ها در لیست جابجا می شود و این می تواند عملیات ادد را
+        //کمی کند تر از آرایه بکند
+
+
+        //یک List<T>
+        //می تواند سریع تر از آرایه باشد
+        //اگر موجودیت T
+        //یک value type باشد
+
+
+        public void ListMethodExample()
+        {
+            List<int> list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+            //میشه تو متد ریمو آل از پریدیکیت استفاده کرد تا آیتم های مورد نظر حذف گردند
+            list.RemoveAll(x => x == 1);
+
+            list.Reverse();
+
+            //تفاوت ادد با اینترست در این است که 
+            //در ادد یک مقدار به آخر آرایه اضافه می شود ولی در اینتسرت می توان
+            //ایندکس خانه ای که باید اطلاعات داخلش برود هم می توانیم بدیهیم
+
+            list.Insert(0, 2);
+
+            list.Add(3);
+        }
+    }
+    #endregion
+
+
+    #region LinkedList
+    public class LindedListClass
+    {
+        //لیست ها یک آیتم رو به جلو دارند ولی
+        //لینکدلیست با 2 آیتم کار می کند
+        //روبه جلو و رو به عقب
+
+        public void ListMethodExample()
+        {
+            LinkedList<int> list = new LinkedList<int>();
+            list.AddLast(1);
+            list.AddLast(2);
+            list.AddLast(3);
+            list.AddAfter(list.First, 11);
+
+            //میشه یه مقدار را قبل یا بعد یک آیتم اضافه کرد
+        }
+    }
+    #endregion
+
+
+    #region Queue<T> and Queue
+
+    public class QueueClass
+    {
+        //queue is first in first out (Fifo)
+        //یعنی اولی که اومده اولین خارج میشه
+
+
+        //لیست queue
+        //لیست ها را پیاده سازی نمی کند و نمیشود آنها را به لیست تبدیل کرد چون
+        //از طریق ایندکس نمی شود به اعضا آن دسترسی داشت
+        //فقط با تبدیل کردن به آرایه می شود به صورت تصادفی به عضای آن دسترسی پیدا کرد
+
+        public void QueueExample()
+        {
+            Queue<string> queue = new Queue<string>();
+            //برای ایجاد صف و وارد کردن آیتنم از enqueue 
+            //استفاده می کنیم
+            queue.Enqueue("one");
+            queue.Enqueue("two");
+            queue.Enqueue("three");
+            queue.Enqueue("four");
+            queue.Enqueue("five");
+
+            //یک کپی از صف را به یک آرایه تبدیل می کند
+            string[] copyQueue = queue.ToArray();
+
+
+            //foreach (var item in queue)
+            //{
+            //    //یک صف را می شود شمارش کرد
+            //    Console.WriteLine(item);
+            //}
+
+            //enqueue
+            //یک ایتم جدید به آخر لیست اضافه می کند
+
+            //dequeue
+            //قدیمی ترین آیتم را از لیست خذف می کند/یعنی اولیترین آیتم را حذف می کند
+
+
+            //peek
+            //اولین ایتم لیست را برمیگرداند
+
+
+            string dequeue=queue.Dequeue();
+
+            string peek=queue.Peek(); //return one
+
+            //این متد مقداری که پک شده است را از صف خارج می کند
+            queue.Dequeue();
+
+            string peek2 = queue.Peek();//return two
+
+            queue.Dequeue();
+            string peek3 = queue.Peek();//return three
+
+            //
+            queue.Enqueue("six");
+
+        }
+    }
+    #endregion
+
+
+    #region Stack<T> and Stack
+    //Stack<T> and Stack are last-in, first-out (LIFO) data structures,
+
+    #region Stack<T>
+    public class StackTClass
+    {
+        //push
+        //برای وارد کردن مقدار به یک صف 
+
+        //pop
+        //برای خارج کردن آخرین ورودی از صف استفاده می شود
+
+        //Peek
+        //برای مشاهده ایتم بعدی استفاده می شود
+
+
+
+    }
+    #endregion
+
     #endregion
 }
