@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -307,5 +308,32 @@ namespace NutshelBooK
     }
     #endregion
 
+    #endregion
+
+
+    #region BitArray
+    public class BitArrayClass
+    {
+        //یک ارایه از مقادیر 
+        //bool
+        //نگه داری می کند
+        //اگر ما یک لیست از بول بخواهیم استفاده از این مورد بهتر است چون 
+        //یک لیست از بول در هرخانه یک بایت حافظه نیاز دارد
+        //ولی برای بیت آرای برای هر خانه یک بیت نیاز مورد استفاده قرار می گیرد
+
+        public void BitArrayMethodExample()
+        {
+            var bits = new BitArray(3);
+            
+        }
+    }
+    #endregion
+
+
+    #region HashSet<T> and SortedSet<T>
+    public class HashSetTandSortedTClass
+    {
+
+    }
     #endregion
 }
