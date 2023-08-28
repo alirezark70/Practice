@@ -333,6 +333,45 @@ namespace NutshelBooK
     #region HashSet<T> and SortedSet<T>
     public class HashSetTandSortedTClass
     {
+        //در متد های این ها جستجو بر اساس هش انجام می شود
+        //آنها موارد تکراری را ذخیره نمی کنند و بدون صدا درخواست برای اد موارد تکراری را نادیده می گیرند
+        //بر اساس موقعیت به المان دسترسی نداریم
+
+        //sorted<T>
+        //به صورت پیش فرض المان ها را مرتب نگه داری می کند
+
+        //hashSet<T>
+        //در حالیکه لیست بالا به صورت پیش فرض المان ها را مرتب نگه داری نمی کند
+        //---
+
+        //وجه اشتراک این دو لیست این است که اینترفیس زیر را پیاده سازی کردند
+        //ISet<T>
+
+
+        public void HashsetTest()
+        {
+            HashSet<char> letters = new HashSet<char> ("the quick brown fox");
+            //در سازنده توانست لیستی از چار بگیرد چون
+            //ienumerable<char>
+            //پیاده سازی کرده است
+
+            bool r1 = letters.Contains('t');//true
+
+            bool r2 = letters.Contains('j');//false
+
+            foreach (char c in letters)
+            {
+                Console.Write(c);//the quickbrownfx
+                //موارد تکراری وارد لیست نشده اند
+                //به عنوان مثال اسپیس های اضافه وارد لیست نشده اند
+            }
+        }
+
+        public void SortedTest()
+        {
+            var letters = new SortedSet<char>("the quick brown fox");
+            foreach (char c in letters) Console.Write(c);   //  bcefhiknoqrtuwx
+        }
 
     }
     #endregion
