@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -373,6 +375,63 @@ namespace NutshelBooK
             foreach (char c in letters) Console.Write(c);   //  bcefhiknoqrtuwx
         }
 
+    }
+    #endregion
+
+
+
+    #region ReadonlyCollection<T>
+    public class ReadonlyCollectionT
+    {
+        //ساخت یک کلاس و یک مجوموعه که کاملا به صورت داخلی قابلیت اضافه و آپدیت داره
+        //کاملا
+        //immiutable می باشد
+        List<string> names = new List<string>();
+
+        public IReadOnlyCollection<string> Names { get; private set; }
+
+        public ReadonlyCollectionT()
+        {
+            Names = new ReadOnlyCollection<string>(names);
+        }
+
+        public void AddInternally() => names.Add("Test");
+
+    }
+    #endregion
+
+    #region Innutable Collections
+    public class ImmutableCollectionClass
+    {
+        //مجموعه تغییر پذیر برای اپلیکیشن خوب هستند و جلو بروز تغییرات و خطاهای را میگیرند
+        //مشکلات تغییر حالت را از بین میبرند
+        //موازی سازی و چند رشته ای را آسان می کنند
+        //استدلال کد را آسان تر می کنند
+
+
+        //مجموعه های تغییر ناپذیر را اگر بخواهیم تغییر بدیم 
+        //یک لیست جدید ایجاد میشه و لیست قبلی غیر قابل تغییر می ماند
+
+
+        //مجموعه های تغییر ناپذیر برای خواندن و نوشتن کندتر از مجموعه های تغییر پذیر هستند
+
+        public void Method1()
+        {
+            var oldList = ImmutableList.Create<int>(1, 2, 3, 4);
+
+            //در این جا یک لیست جدید ایجاد میشه و قبلیه تغییر نمی کنه
+            var newList = oldList.Add(5);
+        }
+
+        public void Method2()
+        {
+            var oldList =new List<int>() { 1,2,3,4};
+
+            //در اینجا نمی شود مثل بالا کار کرد چون خطای کامپایلر تایم میدهد
+            //var newList = oldList.Add(5);
+
+
+        }
     }
     #endregion
 }

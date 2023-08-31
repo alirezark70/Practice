@@ -134,8 +134,8 @@ changeExample.Price = 200;
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
 
-QueueClass queueClass = new QueueClass();
-queueClass.QueueExample();
+ImmutableCollectionClass immutableCollectionClass = new ImmutableCollectionClass();
+immutableCollectionClass.Method1();
 watch.Stop();
 
 var result = watch.ElapsedMilliseconds;
