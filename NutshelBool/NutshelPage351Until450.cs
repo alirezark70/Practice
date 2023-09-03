@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -433,5 +434,43 @@ namespace NutshelBooK
 
         }
     }
+    #endregion
+
+
+
+    #region Equality Comparer
+
+    public class CustomerClass
+    {
+        //بعضی وقت ها ما میخواهیم نام و نام خانوادگی را چک کنیم که برابر باشد
+        //برای اینکار یک کلاس میسازیم که این کار را برای ما انجام دهد
+
+        public CustomerClass(string firstname,string lastname)
+        {
+            Id=new Random().Next();
+            Firstname=firstname; Lastname=lastname;
+        }
+
+        public int Id { get; set; }
+
+        public string Firstname { get; set; }
+
+        public string Lastname { get; set; }
+
+    }
+
+    public class EqualFullName : EqualityComparer<CustomerClass>
+    {
+        public override bool Equals(CustomerClass? x, CustomerClass? y)
+        {
+            return (x?.Firstname==y?.Firstname ) && (x?.Lastname==y?.Lastname);
+        }
+
+        public override int GetHashCode([DisallowNull] CustomerClass obj)
+        {
+            return (obj.Lastname+";"+obj.Firstname).GetHashCode();
+        }
+    }
+
     #endregion
 }

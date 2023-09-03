@@ -133,9 +133,10 @@ changeExample.Price = 200;
 //bool result=area1.Equals(area2);
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
+CustomerClass c1=new CustomerClass("Alireza","Rezaee");
+CustomerClass c2 = new CustomerClass("Alireza", "Rezaee");
 
-ImmutableCollectionClass immutableCollectionClass = new ImmutableCollectionClass();
-immutableCollectionClass.Method1();
+bool test=new EqualFullName().Equals(c1,c2);
 watch.Stop();
 
 var result = watch.ElapsedMilliseconds;
