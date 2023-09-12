@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+
 namespace NutshelBooK
 {
     public class NutshelPage101Until150

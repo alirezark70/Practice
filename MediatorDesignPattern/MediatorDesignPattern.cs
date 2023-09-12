@@ -55,7 +55,14 @@ namespace MediatorDesignPattern
 
         public override void Send(string message, Colleague colleague)
         {
-            throw new NotImplementedException();
+            if(colleague==_colleague1)
+            {
+                _colleague1.Notify(message);
+            }
+            else
+            {
+                _colleague2.Notify(message);
+            }
         }
     }
 
@@ -102,7 +109,7 @@ namespace MediatorDesignPattern
 
         public void Notify(string message)
         {
-            WriteLine("Collague 1");
+            WriteLine("Collague 2");
         }
     }
 }

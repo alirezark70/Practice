@@ -7,6 +7,7 @@ using childClasses = NutshelBooK.Child;
 using NutshelBool;
 using static NutshelBooK.EnumConversionClass;
 using System.Net.Http.Headers;
+using System.Reflection;
 
 
 #region Page30 Until 63
@@ -133,12 +134,24 @@ changeExample.Price = 200;
 //bool result=area1.Equals(area2);
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-CustomerClass c1=new CustomerClass("Alireza","Rezaee");
-CustomerClass c2 = new CustomerClass("Alireza", "Rezaee");
+var namespaceName = "EqualProperties.Models"; // جایگزین کنید با نام فضای نام مورد نظر
+var assembly = Assembly.GetExecutingAssembly();
 
-bool test=new EqualFullName().Equals(c1,c2);
+var types = assembly.GetTypes()
+                    .Where(t => String.Equals(t.Namespace, namespaceName, StringComparison.Ordinal))
+                    .ToArray();
+
+foreach (var type in types)
+{
+    Console.WriteLine(type.Name);
+}
+    
+
 watch.Stop();
 
 var result = watch.ElapsedMilliseconds;
 
 Console.ReadLine();
+
+
+
