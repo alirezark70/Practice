@@ -473,4 +473,36 @@ namespace NutshelBooK
     }
 
     #endregion
+
+
+    #region Query Syntax Versus Sql Syntax
+    public class QuerySyntaxVersusSqlSyntax
+    {
+        //کوئری های لینک شبیه کوئری های اس کیو ال هستند اما 2 تفاوت اصلی دارند
+        //کوئری لینک به یک عبارت سی شارپ خلاصه می شود
+        //کوئری لینک از قوانین سی شارپ پیروی می کند
+    }
+    #endregion
+
+
+
+    public class DeferredExecutionClass
+    {
+        public void Excute()
+        {
+            List<int> numbers = new List<int> { 1 };
+
+            IEnumerable<int> query=numbers.Select(i => i*10);
+            //Console.WriteLine(query);
+
+            //در اینجا یک مقدار دزدی وارد کردیم 
+            numbers.Add(20);
+
+            foreach(var item in query)//در این قسمت وقتی اجرا میشه کوئری کامل اجرا میشه 
+                //داخل این عبارت مقداری که به صورت دزدی وارد کردیم هم وجود دارد
+            {
+                Console.Write(item+ "|");
+            }
+        }
+    }
 }

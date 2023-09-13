@@ -134,18 +134,8 @@ changeExample.Price = 200;
 //bool result=area1.Equals(area2);
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-var namespaceName = "EqualProperties.Models"; // جایگزین کنید با نام فضای نام مورد نظر
-var assembly = Assembly.GetExecutingAssembly();
-
-var types = assembly.GetTypes()
-                    .Where(t => String.Equals(t.Namespace, namespaceName, StringComparison.Ordinal))
-                    .ToArray();
-
-foreach (var type in types)
-{
-    Console.WriteLine(type.Name);
-}
-    
+DeferredExecutionClass deferred = new DeferredExecutionClass();
+deferred.Excute();
 
 watch.Stop();
 
