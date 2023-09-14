@@ -134,8 +134,9 @@ changeExample.Price = 200;
 //bool result=area1.Equals(area2);
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-DeferredExecutionClass deferred = new DeferredExecutionClass();
-deferred.Excute();
+SubQueriesClass subQueries=new SubQueriesClass();
+
+subQueries.Execute();
 
 watch.Stop();
 

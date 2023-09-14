@@ -485,24 +485,71 @@ namespace NutshelBooK
     #endregion
 
 
-
+    #region Deferred Execution
     public class DeferredExecutionClass
     {
         public void Excute()
         {
             List<int> numbers = new List<int> { 1 };
 
-            IEnumerable<int> query=numbers.Select(i => i*10);
+            IEnumerable<int> query = numbers.Select(i => i * 10);
             //Console.WriteLine(query);
 
             //در اینجا یک مقدار دزدی وارد کردیم 
             numbers.Add(20);
 
-            foreach(var item in query)//در این قسمت وقتی اجرا میشه کوئری کامل اجرا میشه 
-                //داخل این عبارت مقداری که به صورت دزدی وارد کردیم هم وجود دارد
+            foreach (var item in query)//در این قسمت وقتی اجرا میشه کوئری کامل اجرا میشه 
+                                       //داخل این عبارت مقداری که به صورت دزدی وارد کردیم هم وجود دارد
             {
-                Console.Write(item+ "|");
+                Console.Write(item + "|");
             }
         }
+
+        public void ExcuteTwo()
+        {
+            List<int> numbers = new List<int> { 1 };
+
+            IEnumerable<int> query = numbers.Select(i => i * 10);
+            //در برخی موارد تاخیر در اجرا باعث مشکل می شود
+            numbers.Add(20);
+
+            foreach (var item in query)
+
+            {
+                Console.Write(item + "|");
+            }
+
+            numbers.Clear();
+            //این باعث میشه لیست کوئری هم داخلش پاک بشه با اینکه لوپ باعث اجرای کوئری شده بود
+
+
+            //برای رفع این مشکل باید از 
+            //.Tolist
+            //استفاده کنیم چون مقدار را درون یک لیست دیگه میریزه
+            //یا
+            //ToArray
+
+
+        }
     }
+    #endregion
+
+
+    #region SubQueries
+    public class SubQueriesClass
+    {
+       
+
+        public void Execute()
+        {
+            string[] names = { "Tom", "Dick", "Harry", "Mary", "Jay" };
+
+            int subQuery = names.OrderBy(n2 => n2.Length).Select(n2 => n2.Length).First();
+
+            IEnumerable<string> outerQuery =
+                names.Where(n => n.Length == 3);
+        }
+    }
+    #endregion
+
 }
