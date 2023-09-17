@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -552,4 +553,46 @@ namespace NutshelBooK
     }
     #endregion
 
+
+    #region SubQueries And Deferred Execution
+    public class SubqueriesAndDeferredExectutionClass
+    {
+        List<string> names = new List<string> {"Alireza","Sommaye","Namser","Abbas","Saeed" };
+        public void Execute()
+        {
+            //وقتی ما یک ساب کوئری داریم
+            //وقتی ساب کوئری ما یک فرایند اجرا دارد بع عنوان مثال
+            //first or Count or ...
+            //کوئری اصلی ما اجرا نمیشه و روی اجرای کوئری اصلی تاثیر نمیزاره
+
+            List<int> numbers=new List<int>() { 1,2,3,4,5};
+
+            //متد کانت که در حالت معمولی باعث اجرای عملیات میشد در اینجا چون در ساب کوئری استفاده شده
+            //باعث اجرای کوئری اصلی نمیشود
+            var result = numbers.Where(e => e > numbers.Count);
+        }
+
+
+      
+    }
+    #endregion
+
+
+
+    #region Progressive Query Building
+    public class ProgressiveQueryBuildingClass
+    {
+        List<string> names = new List<string> { "Alireza", "Sommaye", "Namser", "Abbas", "Saeed" };
+        public void Execute()
+        {
+            //کوئری های پیش رونده 
+            //در هر مرحله یک کوئری ایجاد میشود ولی هنوز کوئری اجرا نشده 
+            var result = names.Select(e => Regex.Replace(e, "[aeiou]", ""));
+            result = result.Where(a => a.Length > 5);
+
+
+
+        }
+    }
+    #endregion
 }
