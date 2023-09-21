@@ -134,9 +134,9 @@ changeExample.Price = 200;
 //bool result=area1.Equals(area2);
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-SubQueriesClass subQueries=new SubQueriesClass();
+ProjectStrategiesClass projectStrategies=new ProjectStrategiesClass();
 
-subQueries.Execute();
+projectStrategies.Execute();
 
 watch.Stop();
 

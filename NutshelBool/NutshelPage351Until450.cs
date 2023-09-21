@@ -595,4 +595,49 @@ namespace NutshelBooK
         }
     }
     #endregion
+
+    #region Project Strategies
+    public class ProjectStrategiesClass
+    {
+        class TempProjectionItem
+        { 
+            public string Original;
+            public string Vowelless;
+
+        }
+
+        public void Execute()
+        {
+            string[] names = { "Tom", "Dick", "Harry", "Mary", "Jay" };
+            //ما میخواهیم وقتی که حروف صدا دار را حذف می کنیم مقدار اصلی را هم در یک پروپرتی دیگه نگه داریم
+            IEnumerable<TempProjectionItem> temp = from n in names
+                                                   select new TempProjectionItem { Original = n,Vowelless= Regex.Replace(n,"[aeiou]","")};
+
+
+            IEnumerable<TempProjectionItem> temp2 
+                = names.Select(n => new TempProjectionItem { Original = n, Vowelless = Regex.Replace(n, "[aeiou]", "") });
+
+
+        }
+    }
+    #endregion
+
+
+    #region Interpreted Queries
+    public class InterpretedQueriesClass
+    {
+        //کوئری های لینک بر مبنای 2 معماری موازی کار می کنند
+        //کوئری های محلی که بر روی 
+        //IEnumerable and value type or reference type
+        //زده می شوند
+
+
+        ///پرس و جوی های تفسیر شده بریا منابع داده از راه دور مثل
+        ///sql server or something
+        ///خصوصیت کوئری های تفسیر شده این است که در زمان اجرا تفسیر می شوند
+        ///و این قابلیت اجرا می دهد که ما از پایگاه داده مانند
+        ///sql server 
+        ///استفاده کنیم
+    }
+    #endregion
 }
