@@ -5,6 +5,7 @@ using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -272,9 +273,9 @@ namespace NutshelBooK
             //اولین ایتم لیست را برمیگرداند
 
 
-            string dequeue=queue.Dequeue();
+            string dequeue = queue.Dequeue();
 
-            string peek=queue.Peek(); //return one
+            string peek = queue.Peek(); //return one
 
             //این متد مقداری که پک شده است را از صف خارج می کند
             queue.Dequeue();
@@ -328,7 +329,7 @@ namespace NutshelBooK
         public void BitArrayMethodExample()
         {
             var bits = new BitArray(3);
-            
+
         }
     }
     #endregion
@@ -354,7 +355,7 @@ namespace NutshelBooK
 
         public void HashsetTest()
         {
-            HashSet<char> letters = new HashSet<char> ("the quick brown fox");
+            HashSet<char> letters = new HashSet<char>("the quick brown fox");
             //در سازنده توانست لیستی از چار بگیرد چون
             //ienumerable<char>
             //پیاده سازی کرده است
@@ -427,7 +428,7 @@ namespace NutshelBooK
 
         public void Method2()
         {
-            var oldList =new List<int>() { 1,2,3,4};
+            var oldList = new List<int>() { 1, 2, 3, 4 };
 
             //در اینجا نمی شود مثل بالا کار کرد چون خطای کامپایلر تایم میدهد
             //var newList = oldList.Add(5);
@@ -446,10 +447,10 @@ namespace NutshelBooK
         //بعضی وقت ها ما میخواهیم نام و نام خانوادگی را چک کنیم که برابر باشد
         //برای اینکار یک کلاس میسازیم که این کار را برای ما انجام دهد
 
-        public CustomerClass(string firstname,string lastname)
+        public CustomerClass(string firstname, string lastname)
         {
-            Id=new Random().Next();
-            Firstname=firstname; Lastname=lastname;
+            Id = new Random().Next();
+            Firstname = firstname; Lastname = lastname;
         }
 
         public int Id { get; set; }
@@ -464,12 +465,12 @@ namespace NutshelBooK
     {
         public override bool Equals(CustomerClass? x, CustomerClass? y)
         {
-            return (x?.Firstname==y?.Firstname ) && (x?.Lastname==y?.Lastname);
+            return (x?.Firstname == y?.Firstname) && (x?.Lastname == y?.Lastname);
         }
 
         public override int GetHashCode([DisallowNull] CustomerClass obj)
         {
-            return (obj.Lastname+";"+obj.Firstname).GetHashCode();
+            return (obj.Lastname + ";" + obj.Firstname).GetHashCode();
         }
     }
 
@@ -539,7 +540,7 @@ namespace NutshelBooK
     #region SubQueries
     public class SubQueriesClass
     {
-       
+
 
         public void Execute()
         {
@@ -557,7 +558,7 @@ namespace NutshelBooK
     #region SubQueries And Deferred Execution
     public class SubqueriesAndDeferredExectutionClass
     {
-        List<string> names = new List<string> {"Alireza","Sommaye","Namser","Abbas","Saeed" };
+        List<string> names = new List<string> { "Alireza", "Sommaye", "Namser", "Abbas", "Saeed" };
         public void Execute()
         {
             //وقتی ما یک ساب کوئری داریم
@@ -565,7 +566,7 @@ namespace NutshelBooK
             //first or Count or ...
             //کوئری اصلی ما اجرا نمیشه و روی اجرای کوئری اصلی تاثیر نمیزاره
 
-            List<int> numbers=new List<int>() { 1,2,3,4,5};
+            List<int> numbers = new List<int>() { 1, 2, 3, 4, 5 };
 
             //متد کانت که در حالت معمولی باعث اجرای عملیات میشد در اینجا چون در ساب کوئری استفاده شده
             //باعث اجرای کوئری اصلی نمیشود
@@ -573,7 +574,7 @@ namespace NutshelBooK
         }
 
 
-      
+
     }
     #endregion
 
@@ -600,7 +601,7 @@ namespace NutshelBooK
     public class ProjectStrategiesClass
     {
         class TempProjectionItem
-        { 
+        {
             public string Original;
             public string Vowelless;
 
@@ -611,10 +612,10 @@ namespace NutshelBooK
             string[] names = { "Tom", "Dick", "Harry", "Mary", "Jay" };
             //ما میخواهیم وقتی که حروف صدا دار را حذف می کنیم مقدار اصلی را هم در یک پروپرتی دیگه نگه داریم
             IEnumerable<TempProjectionItem> temp = from n in names
-                                                   select new TempProjectionItem { Original = n,Vowelless= Regex.Replace(n,"[aeiou]","")};
+                                                   select new TempProjectionItem { Original = n, Vowelless = Regex.Replace(n, "[aeiou]", "") };
 
 
-            IEnumerable<TempProjectionItem> temp2 
+            IEnumerable<TempProjectionItem> temp2
                 = names.Select(n => new TempProjectionItem { Original = n, Vowelless = Regex.Replace(n, "[aeiou]", "") });
 
 
@@ -640,4 +641,48 @@ namespace NutshelBooK
         ///استفاده کنیم
     }
     #endregion
+
+
+    #region Combining Interpreted and Local Queries
+    public class CombiningInterpretedAndLocalQueriesClass
+    {
+      //AsEnumerable
+      //یک کوئری که مفسری است را به یک کوئری محلی تبدیل می کند
+
+      
+        ///asQuerable
+        ///یک کوئری که محلی است را به یک کوئری مفصری تبدیل می کند
+
+
+        //بعضیی وقتا امکانش هست که یک کوئری که میخواهیم بنویسیم از یک کلاس سی شارپی استفاده کنیم که از کلاس های سی شارپی 
+        //استفاده می کنه که در دیتابیس پشتی بانی نمیشه
+        //برای اینکارباید به شکل زیر عمل کنیم
+        public void Execute()
+        {
+            List<CustomerClass> customers = new List<CustomerClass>();
+            Regex wordCounter = new Regex(@"\b(\w[-'])+\b");
+
+            IQueryable<CustomerClass> query = customers.Where(e=>e.Id>100).AsQueryable();//یک کوئری نوشتیم و تبدیلش کردیه به یک کوئری مفصری
+
+            //ولی نیمشه از کلاس 
+            //regex
+            //استفاده کرد برای اینکار بدین صورت عمل می کنیم
+
+            var customerClasses = query.AsEnumerable();
+
+
+            customerClasses = customerClasses.Where(c => wordCounter.Match(c.Firstname).Length > 10);
+            ///متد های زیر 
+            ///ToList ToArray
+            ///هم همین کار را می کنند
+            ///ولی مزیتی که 
+            ///AsEnumarable 
+            ///داره اینه که کوئری را در لحظه اجرا نمی کنه
+        }
+    }
+
+
+    #endregion
+
+
 }
