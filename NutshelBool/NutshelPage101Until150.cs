@@ -22,6 +22,7 @@ namespace NutshelBooK
             this._firstName = firstName;
             this._lastName = lastName;
         }
+        public ICollection<Child> Children { get; set; }
     }
 
     public class Child : Person
@@ -46,6 +47,8 @@ namespace NutshelBooK
                 WriteLine("This Chiled More Than 18");
             }
         }
+
+        public Person Person { get; set; }
     }
     #endregion
 

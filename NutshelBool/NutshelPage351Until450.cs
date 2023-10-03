@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net.NetworkInformation;
 using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -685,4 +688,90 @@ namespace NutshelBooK
     #endregion
 
 
+
+    #region Loading Related Data
+
+    public class TestContext : DbContext
+    {
+        public TestContext()
+        {
+        }
+
+        public TestContext(DbContextOptions options) : base(options)
+        {
+        }
+
+        public DbSet<Person> People { get; set; }
+
+        public int MyProperty { get; set; }
+    }
+
+    public class EagerLoadingClass
+    {
+        ///لود کردن زود هنگام یعنی در زمان نوشتن کوئری نوشته میشه و در کوئریه اولیه برای استفاده مستقیم از دیتابیس برمیگرده
+        ///یکی از میزیت یا عیوب این بارگزاری این است که فقط یک درخواست سمت دیتابیس می رود
+        ///یعنی همی میتواند مفید باشد که تعداد درخواست را کاهش دهد 
+        ///هم می تواند یک ضرب دکارتی را بوجود بیاورد و یک لوپ دیتا ایجاد شود
+        ///single query and split query
+       
+    }
+
+    public class ExplicitLoadingClass
+    {
+        
+        ///این بدین صورت است که در کوئری ثانویه به صورت صریح لود می شود
+        ///
+
+        public void Execute()
+        {
+            var db = new TestContext();
+
+            var person= db.People.FirstOrDefault();
+
+            //یکی از فواید این طرح این است که می توان بدون اینکه هیچ اطلاعاتی سمت مموری بیاد یک کوئری سمت سرور اجرا کنیم
+
+            var postCount=db.Entry(person).Collection(e=>e.Children).Query().Count();
+        }
+
+    }
+    ///https://learn.microsoft.com/en-us/ef/core/querying/related-data/
+    ///https://learn.microsoft.com/en-us/ef/core/querying/single-split-queries
+
+    #endregion
+
+
+    #region Deletates Versus Expression Trees
+    public class CustomerClassDVET
+    {
+        public int Id { get; set; }
+
+        public int Price { get; set; }
+
+        public int Discount { get; set; }
+
+    }
+
+    public class DeletatesVersusExpressionTreesClass
+    {
+        List<CustomerClassDVET> customers=new List<CustomerClassDVET>();
+         IQueryable<CustomerClassDVET> customers2 = null;
+        public void Execute()
+        {
+            //برای کوئری های محلی از دلیگیت ها استفاده می کنیم
+            Func<CustomerClassDVET, bool> hasDisoucntLocal = p => p.Discount is 0;
+            IEnumerable<CustomerClassDVET> queryLocal=customers.Where(hasDisoucntLocal);
+
+
+            //برای کوئری های که سمت دیتابیس هستند هم از روش زیر اسفتاده می کنیم
+
+            Expression<Func<CustomerClassDVET, bool>> pridicate = c => c.Discount == 0;
+            IQueryable<CustomerClassDVET> query2 = customers2.Where(pridicate);
+
+
+
+
+        }
+    }
+
+    #endregion
 }
