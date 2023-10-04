@@ -9,6 +9,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net.NetworkInformation;
 using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -730,7 +731,7 @@ namespace NutshelBooK
 
             //یکی از فواید این طرح این است که می توان بدون اینکه هیچ اطلاعاتی سمت مموری بیاد یک کوئری سمت سرور اجرا کنیم
 
-            var postCount=db.Entry(person).Collection(e=>e.Children).Query().Count();
+           // var postCount=db.Entry(person).Collection(e=>e.Children).Query().Count();
         }
 
     }
@@ -773,5 +774,37 @@ namespace NutshelBooK
         }
     }
 
+    #endregion
+
+
+    #region Compiling Expression Trees
+    public class CompilingExpressionTreesClass
+    {
+        //compile()
+        //ویژگی است که ما می توانیم یک ویژگی درختی را به یک نماینده یا دلیگیت تبدیل کنیم
+        IQueryable<ProductCompilingExpressionTreesClass> products = null;
+
+        void Execute()
+        {
+           // var varaiableDelegate=products.
+        }
+    }
+    public class ProductCompilingExpressionTreesClass
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public int Price { get; set; }
+
+        public int Discount { get; set; }
+
+        public DateTime LastSale { get; set; }
+
+        public static Expression<Func<ProductCompilingExpressionTreesClass, bool>> IsSelling()
+        {
+            return e => e.LastSale > DateTime.Now.AddDays(30);
+        }
+    }
     #endregion
 }
