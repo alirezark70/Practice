@@ -786,6 +786,7 @@ namespace NutshelBooK
 
         void Execute()
         {
+            
            // var varaiableDelegate=products.
         }
     }
@@ -805,6 +806,69 @@ namespace NutshelBooK
         {
             return e => e.LastSale > DateTime.Now.AddDays(30);
         }
+
+
+        void Execute2()
+        {
+            ///بیس کلاس 
+            ///lambdaExpression 
+            ///کلاس پایه برای 
+            ///expression<T>
+            ///می باشد
+            ///
+            var queryValue = new ProductCompilingExpressionTreesClass();
+
+            Func<ProductCompilingExpressionTreesClass, bool> expression=e=>e.Price>1000;
+            var result=expression.Invoke(queryValue);
+
+            LambdaExpersions lambdaExpersions;
+        }
+
+
+         
+    }
+
+
+
+
+    #endregion
+
+
+    #region The Expression DOM
+    public class TheExpressionDOM
+    {
+        public void ExecuteCreateExpression()
+        {
+            //ما میخواهیم یک 
+            //expression Tree
+            //بسازیم و برای اینکار باید از پایین ترین مرحله شروع به ساخت کنیم
+            //برای اولین مرحله ما باید پارامترهای را پیاده سازی کنیم
+            ParameterExpression param = Expression.Parameter(typeof(string), "S");
+
+            //دومین مرحله ایجاد اعضای اکسپریشن است
+            MemberExpression stringLength = Expression.Property(param, "Length");
+
+            //در بالا مورد طول شو تعریف کردیم
+            //در پایین ما طول را مشخص می کنیم
+            ConstantExpression five = Expression.Constant(5);
+
+            //در خط پایین مقایسه را تعریف کردیم
+            BinaryExpression comparison = Expression.LessThan(stringLength, five);
+
+            //در مرحله آخر ساخت یک کوئری لامدا می باشد
+            Expression<Func<string,bool>> lambda=
+                Expression.Lambda<Func<string,bool>>(comparison, param);
+
+            //در بالا ما یک مقایسه سمت سروری ساختیم 
+
+            Func<string,bool> localyQuery=lambda.Compile();
+            //در خط بالا ما کوئری را به حالت لوکالی تبدیل کردیم
+
+           bool result= localyQuery("Alireza");
+
+        }
+        
+
     }
     #endregion
 }
