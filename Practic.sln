@@ -134,7 +134,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{4FD7996A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeLearn", "YoutubeLearn\YoutubeLearn.csproj", "{C2107348-95D6-4327-8F34-9BB6DED64D5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid", "Solid\Solid.csproj", "{C88DD3E0-92D7-49CC-AE3E-3D0DD51C0E51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid", "Solid\Solid.csproj", "{C88DD3E0-92D7-49CC-AE3E-3D0DD51C0E51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryGenereateProject", "QueryGenereateProject\QueryGenereateProject.csproj", "{E5BDA857-E699-4B7F-BF44-137713B9BC05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -294,6 +296,10 @@ Global
 		{C88DD3E0-92D7-49CC-AE3E-3D0DD51C0E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C88DD3E0-92D7-49CC-AE3E-3D0DD51C0E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C88DD3E0-92D7-49CC-AE3E-3D0DD51C0E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5BDA857-E699-4B7F-BF44-137713B9BC05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5BDA857-E699-4B7F-BF44-137713B9BC05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5BDA857-E699-4B7F-BF44-137713B9BC05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5BDA857-E699-4B7F-BF44-137713B9BC05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -358,6 +364,7 @@ Global
 		{1F033A47-38C5-480D-BB3F-AA95B60C0B6F} = {3918E161-5E31-46A6-9881-C71C70F63F22}
 		{C2107348-95D6-4327-8F34-9BB6DED64D5D} = {4FD7996A-3B2F-4D2D-818C-E17ABA352BC7}
 		{C88DD3E0-92D7-49CC-AE3E-3D0DD51C0E51} = {4FD7996A-3B2F-4D2D-818C-E17ABA352BC7}
+		{E5BDA857-E699-4B7F-BF44-137713B9BC05} = {4FD7996A-3B2F-4D2D-818C-E17ABA352BC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {709702AD-7FDD-4B82-8372-3D5B7CEF8343}

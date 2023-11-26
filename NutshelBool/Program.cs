@@ -134,11 +134,15 @@ changeExample.Price = 200;
 //bool result=area1.Equals(area2);
 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-ProjectStrategiesClass projectStrategies=new ProjectStrategiesClass();
+//ContainsWithEfLikeClass containsWithEf=new ContainsWithEfLikeClass();
+//containsWithEf.FindAlirezaNumberUseEfLike(9800);
+List<string> names =new List<string> { "Tom", "Dick", "Harry", "Mary", "Jay" };
 
-projectStrategies.Execute();
+var query = names.SelectAlireza(e => e.StartsWith("Tom"),0);
+//IndexedFilteringClass.Execute();
 
-watch.Stop();
+query.ToList();
+    watch.Stop();
 
 var result = watch.ElapsedMilliseconds;
 
