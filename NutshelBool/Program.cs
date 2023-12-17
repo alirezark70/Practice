@@ -8,6 +8,7 @@ using NutshelBool;
 using static NutshelBooK.EnumConversionClass;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Diagnostics.Contracts;
 
 
 #region Page30 Until 63
@@ -132,19 +133,20 @@ changeExample.Price = 200;
 //area2.Measure1 = 18;
 //area2.Measure2 = 3;
 //bool result=area1.Equals(area2);
-var watch = System.Diagnostics.Stopwatch.StartNew();
+//var watch = System.Diagnostics.Stopwatch.StartNew();
 
-//ContainsWithEfLikeClass containsWithEf=new ContainsWithEfLikeClass();
-//containsWithEf.FindAlirezaNumberUseEfLike(9800);
-List<string> names =new List<string> { "Tom", "Dick", "Harry", "Mary", "Jay" };
+////ContainsWithEfLikeClass containsWithEf=new ContainsWithEfLikeClass();
+////containsWithEf.FindAlirezaNumberUseEfLike(9800);
+//List<string> names =new List<string> { "Tom", "Dick", "Harry", "Mary", "Jay" };
 
-var query = names.SelectAlireza(e => e.StartsWith("Tom"),0);
+//var query = names.SelectAlireza(e => e.StartsWith("Tom"),0);
 //IndexedFilteringClass.Execute();
 
-query.ToList();
-    watch.Stop();
+//ParallelForeachClass foreachClass = new ParallelForeachClass();
+//foreachClass.Execute();
+//List<VarPattern> varPattern = new List<VarPattern>();
 
-var result = watch.ElapsedMilliseconds;
+await CryptoCurrency.WriteLastBitcoinPrice();
 
 Console.ReadLine();
 
