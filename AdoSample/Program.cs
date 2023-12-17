@@ -6,12 +6,7 @@ using AdoSample.Models;
 
 
 
-SqlBulkSample bulkSample = new SqlBulkSample();
-
-bulkSample.AddBulk();
-
-var reader = new TransactionalSample();
-
+Console.WriteLine();
 
 //ConnectionWrapper ConnectionWrapper = new ConnectionWrapper();
 //ConnectionWrapper.WorkingWithDataReader<Categories>($"{nameof(Categories.CategoryName)} IS NOT NULL","Id");
