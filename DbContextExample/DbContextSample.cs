@@ -237,4 +237,36 @@ namespace DbContextExample
         }
     }
     #endregion
+
+
+    #region Using Sql Command
+    public class UsingSqlCommand
+    {
+        private readonly DbContextSample _db;
+
+        public UsingSqlCommand(DbContextSample db)
+        {
+            _db = db;
+        }
+
+        public void RowQuery(string sql)
+        {
+            //بدین شکل می تونیم از دستورات خالص کوئری دیتابیس استفاده کنیم
+            var peiople=_db.People.FromSqlRaw(sql);
+
+            //اگر بخواهیم از استرینگ اینترپلیشن استفاده کنیم هم این کار را انجام میدیم
+            var people = _db.People.FromSqlInterpolated($"");
+        }
+
+
+
+        public void ToQuery()
+        {
+            //دستوری است که در ای اف 5 اضافه شده است
+            // فقط خواندنی است
+
+        }
+    }
+    #endregion
+
 }

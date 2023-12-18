@@ -192,41 +192,8 @@ namespace NutshelBooK
 
     }
 
-    public static class Helper
-    {
-
-        //public static IEnumerable<TSource> ForeachHelper<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
-        //{
-        //    Parallel.ForEach(source, item =>
-        //    {
-        //        if (predicate(item)) yield return item;
-        //    });
-        //}
-            
-
-    }
     #endregion
 
 
-   public class CryptoCurrency
-    {
-        private static readonly HttpClient client = new HttpClient();
 
-       public static async Task WriteLastBitcoinPrice()
-        {
-            var price = await GetCryptoPrice("bitcoin");
-            Console.WriteLine($"The current price of Bitcoin is {price}");
-        }
-
-        static async Task<decimal> GetCryptoPrice(string cryptoName)
-        {
-            var response = await client.GetAsync($"https://api.coinbase.com/v2/prices/{cryptoName}-usd/spot");
-            response.EnsureSuccessStatusCode();
-            var stringResponse = await response.Content.ReadAsStringAsync();
-
-            // Parse the response and return the price
-            var price = decimal.Parse(stringResponse);
-            return price;
-        }
-    }
 }
