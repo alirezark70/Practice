@@ -195,5 +195,19 @@ namespace NutshelBooK
     #endregion
 
 
+    #region SelectMany
+    public class SelectManyClass
+    {
+        //برای فراخوانی فرزندان یک مدل کار بسیار مناسبی است 
+
+        public void SelectManyExecute()
+        {
+            string[] nameList = { "Alieza Rezaee", "Sommaye Babaei" };
+            
+
+            var  fullName=nameList.SelectMany(name => name.Split(" "));
+        }
+    }
+    #endregion
 
 }
