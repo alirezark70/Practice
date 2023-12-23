@@ -269,4 +269,9 @@ namespace DbContextExample
     }
     #endregion
 
+
+
+    #region Interceptors
+
+    #endregion
 }
