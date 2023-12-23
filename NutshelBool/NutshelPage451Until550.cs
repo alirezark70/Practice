@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -210,4 +211,103 @@ namespace NutshelBooK
     }
     #endregion
 
+
+    #region Join
+
+    public class PersonJoin
+    {
+        public PersonJoin(string firstName,string lastname)
+        {
+            this.Firstname=firstName;
+            Lastname = lastname;
+        }
+        public string Firstname { get; set; }
+
+        public string Lastname { get; set; }
+    }
+
+    public class PetJoinClass
+    {
+        public string Name { get; set; }
+
+        public PersonJoin Owner { get; set; }
+    }
+
+    public class JoinClass
+    {
+        PersonJoin magnus = new("Magnus", "Hedlund");
+        PersonJoin terry = new ("Terry", "Adams");
+        PersonJoin charlotte = new("Charlotte", "Weiss");
+        PersonJoin arlene = new("Arlene", "Huff");
+        PersonJoin rui = new("Rui", "Raposo");
+
+        List<PersonJoin> people = new List<PersonJoin>();
+        List<PetJoinClass> pets = new List<PetJoinClass>();
+        public void IntoToModelJoin(List<PersonJoin> people, params PersonJoin[] personJoin)
+        {
+            people.AddRange(personJoin);
+        }
+
+        public void PreparePet()
+        {
+            pets.Add(new PetJoinClass() { Name="Barely",Owner= terry });
+            pets.Add(new PetJoinClass() { Name= "Boots", Owner= terry });
+            pets.Add(new PetJoinClass() { Name= "Whiskers", Owner= charlotte });
+            pets.Add(new PetJoinClass() { Name = "Blue Moon", Owner = rui });
+            pets.Add(new PetJoinClass() { Name="Barely",Owner= magnus });
+        }
+
+
+
+        public void Execute()
+        {
+            IntoToModelJoin(people, magnus, terry, charlotte, arlene, rui);
+
+            PreparePet();
+
+
+            var query = people.Join(pets, person => person, e => e.Owner, (person, pets) => new {OwnerName=person.Firstname,PetName=pets.Name });
+        }
+
+    }
+
+
+    #endregion
+
+
+    #region Concat Union UnionBy
+    public class ConcatUnionUnionByClass
+    {
+        int[] seq1 = {1,2,3,4};
+        int[] seq2 = {4,5,6,7};
+
+
+        //concat
+        //مقادیر 2 مجموعه را داخل یک مجموعه میریزد
+        public void Concat()
+        {
+            var collection=seq1.Concat(seq2);
+            //resutl : 1,2,3,4,4,5,6,7
+
+        }
+
+        public void Union()
+        {
+            var collection= seq1.Union(seq2);
+            //result : 1,2,3,4,5,6,7
+            //مقادیر تکراری را حدف می کند
+        }
+        
+        public void UnionBy()
+        {
+            //بر اساس یک انتخابگر مقادیر را یونیون می کند
+
+            string[] seq1 = { "A", "b", "C" };
+            string[] seq2 = { "a", "B", "c" }; 
+            var union = seq1.UnionBy(seq2, x => x.ToUpperInvariant());// union is { "A", "b", "C" }
+        }
+
+
+    }
+    #endregion
 }

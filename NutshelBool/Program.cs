@@ -146,7 +146,12 @@ changeExample.Price = 200;
 //foreachClass.Execute();
 //List<VarPattern> varPattern = new List<VarPattern>();
 
-await CryptoCurrency.WriteLastBitcoinPrice();
+//await CryptoCurrency.WriteLastBitcoinPrice();
+
+
+JoinClass joinClass= new JoinClass();
+
+joinClass.Execute();
 
 Console.ReadLine();
 
