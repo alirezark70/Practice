@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -91,6 +92,8 @@ namespace NutshelBooK
 
     }
     #endregion
+
+
     #region Indexer In Ef core
     public class Blog
     {
@@ -134,8 +137,7 @@ namespace NutshelBooK
 
     #region Inheritance And Polyphormic
 
-    //Upcasting
-    //تدبیل فرزند به والد را می گویند که به صورت ضمنی انجام می شود 
+
     public class Asset
     {
         public int Age { get; set; }
@@ -325,7 +327,7 @@ namespace NutshelBooK
         //باید از کلمه کلیدی 
         //new
         //استفاده کنید برای حل این مشکل
-        public int Counter { get; set; }
+        public new int Counter { get; set; }
     }
     #endregion
 
@@ -699,7 +701,8 @@ namespace NutshelBooK
 
     }
 
-    #region Generic Constraints
+    
+    
 
     public class ExampleGenericConstraint
     {
@@ -782,7 +785,7 @@ namespace NutshelBooK
     #endregion
 
 
-    #endregion
+    
 
     #region Test
     public class TestDefault
