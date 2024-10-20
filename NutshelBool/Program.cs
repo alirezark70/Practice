@@ -149,11 +149,17 @@ changeExample.Price = 200;
 //await CryptoCurrency.WriteLastBitcoinPrice();
 
 
-JoinClass joinClass= new JoinClass();
+//JoinClass joinClass= new JoinClass();
 
-joinClass.Execute();
+//joinClass.Execute();
 
-Console.ReadLine();
+//Console.ReadLine();
+
+IOTaskExample iOTask  =new IOTaskExample();
+
+Progress<string> progress = new Progress<string>(e => Console.WriteLine(e));
+
+await iOTask.ReadFileAsync(@"C:\Users\email\OneDrive\Desktop\Tickets.txt", progress,CancellationToken.None);
 
 
 
