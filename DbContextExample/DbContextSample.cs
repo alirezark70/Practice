@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DbContextExample.Interceptor;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +26,7 @@ namespace DbContextExample
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Sample");
+            optionsBuilder.UseSqlServer("Server=localhost; Database=TestDb; Integrated Security=True").AddInterceptors(new CancelTagedQuery());
         }
         //دیبیکانتکس نماینده دیتابیس در پروژه و یک نشست در دات نت کور است
         //خود دبی کانتکست ترکیبی از 2 دیزاین پترن 
