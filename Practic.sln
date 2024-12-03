@@ -154,6 +154,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Session30", "Session30", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiSample", "DiSample\DiSample.csproj", "{74C27597-9924-4A45-B5FB-CF8423985800}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCoreSample", "DotNetCoreSample\DotNetCoreSample.csproj", "{DA03BEAB-075D-450F-99F4-8E717841C7C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -328,6 +330,10 @@ Global
 		{74C27597-9924-4A45-B5FB-CF8423985800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74C27597-9924-4A45-B5FB-CF8423985800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74C27597-9924-4A45-B5FB-CF8423985800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA03BEAB-075D-450F-99F4-8E717841C7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA03BEAB-075D-450F-99F4-8E717841C7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA03BEAB-075D-450F-99F4-8E717841C7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA03BEAB-075D-450F-99F4-8E717841C7C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -401,6 +407,7 @@ Global
 		{F920BB39-E5FD-40AB-AA11-A2CBDD691F31} = {3174AA22-0641-495F-A004-29E8589770B0}
 		{1B7EB59A-F01B-4B8F-B6F7-248CEA5A392F} = {3174AA22-0641-495F-A004-29E8589770B0}
 		{74C27597-9924-4A45-B5FB-CF8423985800} = {1B7EB59A-F01B-4B8F-B6F7-248CEA5A392F}
+		{DA03BEAB-075D-450F-99F4-8E717841C7C6} = {3174AA22-0641-495F-A004-29E8589770B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {709702AD-7FDD-4B82-8372-3D5B7CEF8343}
