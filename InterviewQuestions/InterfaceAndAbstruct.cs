@@ -58,4 +58,69 @@ namespace InterviewQuestions
             Console.WriteLine("TT");
         }
     }
+
+    public abstract class Animal
+    {
+        public abstract void MakeSound(); // این متد باید در کلاس‌های مشتق شده پیاده‌سازی شود  
+    }
+
+    public class Dog : Animal
+    {
+        public override void MakeSound()
+        {
+            Console.WriteLine("Woof!"); // پیاده‌سازی متد abstract  
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            // Animal animal = new Animal(); // خطا: کلاس abstract قابل نمونه‌سازی نیست  
+
+            Animal dog = new Dog(); // یک نمونه از Dog (کلاس مشتق شده) ایجاد می‌شود  
+            dog.MakeSound(); // فراخوانی متد پیاده‌سازی شده در کلاس مشتق شده  
+        }
+    }
+
+    // Interface تعریف قرارداد بدون منطق  
+    public interface IFlyable
+    {
+        void Fly();
+    }
+
+    // Abstract Class با تعریف منطق پیش‌فرض برای کلاس‌های مشتق شده  
+    public abstract class Bird
+    {
+        public abstract void MakeSound(); // متد Abstract که باید در زیرکلاس پیاده‌سازی شود  
+
+        public virtual void Sleep()
+        {
+            Console.WriteLine("Sleeping..."); // متد Virtual با پیاده‌سازی پیش‌فرض  
+        }
+    }
+
+    public class Sparrow : Bird, IFlyable
+    {
+        public override void MakeSound()
+        {
+            Console.WriteLine("Chirp Chirp!"); // پیاده‌سازی متد abstract  
+        }
+
+        public void Fly()
+        {
+            Console.WriteLine("Sparrow is flying!"); // پیاده‌سازی متد Interface  
+        }
+    }
+
+    class Program2
+    {
+        static void Main()
+        {
+            Sparrow sparrow = new Sparrow();
+            sparrow.MakeSound(); // صدای پرنده  
+            sparrow.Sleep(); // منطق پیش‌فرض در کلاس Abstract  
+            sparrow.Fly(); // متد Interface  
+        }
+    }
 }

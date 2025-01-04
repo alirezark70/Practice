@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServiceSampleS47.Protos";
+
+
+message addKeywordRequest
+{
+
+}
+
+message addKeywordReplay
+{
+
+}
