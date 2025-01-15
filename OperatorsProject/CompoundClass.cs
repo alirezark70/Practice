@@ -61,5 +61,13 @@ namespace OperatorsProject
             //thsi is Conditional Experssion
             return input == 0 ? "Ziro" : "Not Ziro";
         }
+
+        private readonly string input;
+        public string MethodA(string input)
+        {
+            return input;
+        }
+
+
     }
 }
