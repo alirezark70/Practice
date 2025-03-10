@@ -87,6 +87,7 @@ namespace NutshelBooK
             //ایندکس کالکشن می باشد و با این مقدار می توان بر روی ایندکس ها کار کرد
             IEnumerable<string> query = names.Where((n, i) => i % 2 == 0);
 
+            IEnumerable<string> quries = names.Where((variable, index) => index % 2 == 0);
            
         }
     }

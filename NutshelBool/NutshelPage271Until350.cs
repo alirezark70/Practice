@@ -309,6 +309,13 @@ namespace NutshelBooK
             return a.Equals(b);//return is true 
         }
 
+        public bool EquealProtocol2()
+        {
+            object a = "Alireza";
+            object b = "Ali";
+
+            return a.Equals(b);
+        }
         public bool ReferenceEquealy()
         {
             object a = 10;

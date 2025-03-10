@@ -1,0 +1,48 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcService1.Protos";
+
+//چون در پروتو نمی تونیم بدون جواب باشیم باید این ایمپورت کنیم تا امپتی 
+//empty برگردونیم
+
+import "google/protobuf/empty.proto";
+
+//میخوام متد هام اینجا بنویسم
+//rpc دستور نوشتن متد
+//CreatePerson اسم متدمه
+//CreatePersonRequest ورودی متد
+//stream یعنی ما تعدادی از از درخواست دارم
+//PersonReply مقداری که متد جواب میده یعنی جواب متد
+//stream ما تعدادی از جواب داریم
+service PersonService {
+	rpc CreatePerson(stream CreatePersonRequest) returns (stream PersonReply);
+	rpc UpdatePerson(UpdatePersonRequest) returns(google.protobuf.Empty);
+	rpc DeletePerson(stream PersonByIdRequest) returns (google.protobuf.Empty);
+	rpc GetPersonById(PersonByIdRequest) returns (PersonReply);
+	rpc GetAll(google.protobuf.Empty) returns (stream PersonReply);
+}
+
+
+//ریکوست ما این میشه
+//عددها اولیت می باشد
+message CreatePersonRequest{
+	string FirstName=1;
+	string LastName=2;
+}
+
+//جواب متد
+message PersonReply {
+	int32 Id=1;
+	string FirstName=2;
+	string LastName=3;
+}
+
+message UpdatePersonRequest{
+	int32 Id=1;
+	string FirstName=2;
+	string LastName=3;
+}
+
+message PersonByIdRequest{
+	int32 Id=1;
+}

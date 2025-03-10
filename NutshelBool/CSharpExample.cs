@@ -1,10 +1,12 @@
-﻿using System;
+﻿using NutshelBooK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace NutshelBool
 {
@@ -21,6 +23,7 @@ namespace NutshelBool
 
             public void ImplicitCast()
             {
+
                 int a = 10;
 
                 long b = a; // this is implicit Cast ضمنی
@@ -108,6 +111,9 @@ namespace NutshelBool
 
             #region In Parameter Modifier
             int readonlyArgument = 44;
+
+            public event EventHandler? CanExecuteChanged;
+
             // value is still 44
             void TestInKeyword()
             {
@@ -120,6 +126,16 @@ namespace NutshelBool
             {
                 // Uncomment the following line to see error CS8331
                 //number = 19;
+            }
+
+            public bool CanExecute(object? parameter)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Execute(object? parameter)
+            {
+                throw new NotImplementedException();
             }
             #endregion
 
