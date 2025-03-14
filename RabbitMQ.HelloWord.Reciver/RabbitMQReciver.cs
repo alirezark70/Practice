@@ -38,7 +38,7 @@ namespace RabbitMQ.HelloWord.Reciver
                 );
 
             // تنظیم تعداد پیام‌های همزمان  
-           // await channel.BasicQosAsync(0, 1, false);
+            // await channel.BasicQosAsync(0, 1, false);
 
             // ایجاد Consumer  
             var consumer = new AsyncEventingBasicConsumer(channel);
@@ -46,25 +46,32 @@ namespace RabbitMQ.HelloWord.Reciver
 
             consumer.ReceivedAsync += Consumer_ReceivedAsync;
 
-                   await channel.BasicConsumeAsync(
-                       queue: _queueName,
-                       autoAck: true,
-                       consumer: consumer
-                   );
+            await channel.BasicConsumeAsync(
+                queue: _queueName,
+                autoAck: true,
+                consumer: consumer
+            );
 
             Console.Write("Press [Enter] to exit");
             Console.ReadLine();
+
+            async Task Consumer_ReceivedAsync(object sender, BasicDeliverEventArgs @event)
+            {
+                var body = @event.Body.ToArray();
+
+                var stringMessage = Encoding.UTF8.GetString(body);
+
+                Console.WriteLine($"[-] Message recived {stringMessage}");
+
+                await channel.BasicAckAsync(@event.DeliveryTag,false);
+
+
+
+            }
         }
 
 
 
-        private async Task Consumer_ReceivedAsync(object sender, BasicDeliverEventArgs @event)
-        {
-            var body=@event.Body.ToArray();
 
-            var stringMessage=Encoding.UTF8.GetString(body);
-
-            Console.WriteLine($"[-] Message recived {stringMessage}");
-        }
     }
 }

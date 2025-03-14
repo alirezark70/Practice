@@ -1,0 +1,25 @@
+# انتخاب تصویر پایه دات نت 8  
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build  
+
+# تنظیم مسیر کار  
+WORKDIR /app  
+
+# کپی کردن csproj و Restore dependencies  
+COPY *.csproj ./  
+RUN dotnet restore  
+
+# کپی کردن سایر فایل‌ها و ساخت پروژه  
+COPY . ./  
+RUN dotnet publish -c Release -o out  
+
+# مرحله نهایی: استفاده از تصویر runtime  
+FROM mcr.microsoft.com/dotnet/runtime:8.0  
+
+# تنظیم مسیر کار  
+WORKDIR /app  
+
+# کپی کردن خروجی مرحله build  
+COPY --from=build /app/out .  
+
+# اجرای برنامه  
+ENTRYPOINT ["dotnet", "MyConsoleApp.dll"]  
