@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace StructuralPatternSample
+namespace StructuralPatternSample.Decorator
 {
     internal class DecoratorDesignPatternLoginSample
     {
@@ -55,4 +56,25 @@ namespace StructuralPatternSample
             Console.WriteLine("Send Sms");
         }
     }
+
+
+    //public class WebClientDecorator : WebClient
+    //{
+    //    private readonly WebClient _client;
+    //    public WebClientDecorator(WebClient client)
+    //    {
+    //        _client = client;
+    //    }
+
+    //    public string DownloadString(string url)
+    //    {
+    //        if (string.IsNullOrEmpty(url))
+    //        {
+    //            return _client.DownloadString(url);
+    //        }
+    //        else return string.Empty;
+    //    }
+    //}
+
 }
+

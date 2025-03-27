@@ -1,4 +1,4 @@
-﻿namespace NutshelBool
+﻿namespace NutshelBooK
 {
     public interface ICommand<T>
     {

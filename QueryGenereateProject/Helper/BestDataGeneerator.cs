@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QueryGenereateProject.Helper.a
+namespace QueryGenereateProject.Helper
 {
     public class DataGenerator
     {

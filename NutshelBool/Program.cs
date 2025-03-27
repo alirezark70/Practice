@@ -1,10 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using NutshelBooK;
-using static NutshelBool.CSharpExample;
+using static NutshelBooK.CSharpExample;
 using person = NutshelBooK.Person;
 using childClasses = NutshelBooK.Child;
-using NutshelBool;
 using static NutshelBooK.EnumConversionClass;
 using System.Net.Http.Headers;
 using System.Reflection;

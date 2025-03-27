@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StructuralPatternSample
+namespace StructuralPatternSample.Decorator
 {
     internal class DecoratorDesignPattern
     {
@@ -41,9 +41,9 @@ namespace StructuralPatternSample
             _coffee = coffee;
         }
 
-        public virtual double GetCost()=> _coffee.GetCost();
+        public virtual double GetCost() => _coffee.GetCost();
 
-        public virtual string GetDescription()=> _coffee.GetDescription();
+        public virtual string GetDescription() => _coffee.GetDescription();
     }
 
     public class MilkDecorator : CoffeeDecorator
@@ -61,7 +61,7 @@ namespace StructuralPatternSample
         }
     }
 
-    public class SugarDecorator: CoffeeDecorator
+    public class SugarDecorator : CoffeeDecorator
     {
         public SugarDecorator(ICoffee coffee) : base(coffee)
         {
@@ -89,7 +89,7 @@ namespace StructuralPatternSample
 
         public override string GetDescription()
         {
-            return base.GetDescription()+ " " + "Chocolate";
+            return base.GetDescription() + " " + "Chocolate";
         }
     }
 

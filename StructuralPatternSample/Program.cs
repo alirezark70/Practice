@@ -3,6 +3,7 @@
 
 
 using StructuralPatternSample;
+using StructuralPatternSample.Decorator;
 
 
 var login=new SmsLoginDecorator(new Login());
