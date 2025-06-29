@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "LifeCycleApp": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
