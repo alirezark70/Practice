@@ -4,9 +4,4 @@ using LinkedinLearn;
 Console.WriteLine("Hello, World!");
 
 
-FooService foo =new FooService();
-
-foo.PrintName("A");
-
-
 Console.ReadLine();

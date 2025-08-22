@@ -2,9 +2,6 @@
 
 using TheCleanCode;
 
-CuncurrencySample cuncurrencySample = new CuncurrencySample();
-
-cuncurrencySample.CalculateNumber();
 
 Console.ReadLine();
 
