@@ -3,9 +3,13 @@
 
 using CSharpInDepth;
 
-ModerEventExample moderEvent=new ModerEventExample();
+//ModerEventExample moderEvent=new ModerEventExample();
 
-moderEvent.Execute();
+//moderEvent.Execute();
+
+ClosureExample2 closure=new ClosureExample2();
+
+closure.ClosureDemo();
 
 
 Console.WriteLine("Hello, World!");
