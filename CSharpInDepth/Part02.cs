@@ -106,4 +106,43 @@ namespace CSharpInDepth
     }
 
     #endregion
+
+
+    #region Yield and lazy
+
+    public class EvenNumberGenerator
+    {
+        // این متد تمام اعداد زوج را در یک لیست ذخیره و سپس لیست را برمی‌گرداند
+        public static List<int> GetEvenNumbersEager(int start, int end)
+        {
+            Console.WriteLine("--- شروع GetEvenNumbersEager ---");
+            List<int> evenNumbers = new List<int>();
+            for (int i = start; i <= end; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    evenNumbers.Add(i);
+                    Console.WriteLine($"Eagerly added: {i}"); // برای نمایش نحوه کارکرد
+                }
+            }
+            Console.WriteLine("--- پایان GetEvenNumbersEager ---");
+            return evenNumbers;
+        }
+
+        public static IEnumerable<int> GetEvenNumbersLazy(int start, int end)
+        {
+            Console.WriteLine("--- شروع GetEvenNumbersLazy ---");
+            for (int i = start; i <= end; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine($"Yielding: {i}"); // برای نمایش نحوه کارکرد
+                    yield return i; // یک عدد را برمی‌گرداند و اجرا را متوقف می‌کند
+                }
+            }
+            Console.WriteLine("--- پایان GetEvenNumbersLazy ---"); // تنها وقتی تمام اعداد درخواست شوند اجرا می‌شود
+        }
+    }
+
+    #endregion
 }
