@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CSharpInDepth
+namespace CSharpInDepth.Part02
 {
     internal class Part02
     {

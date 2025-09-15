@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
-using CSharpInDepth;
+using CSharpInDepth.Part02;
 
 //ModerEventExample moderEvent=new ModerEventExample();
 
